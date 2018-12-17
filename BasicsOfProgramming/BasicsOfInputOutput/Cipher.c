@@ -38,7 +38,6 @@ int isNumeric(char c) { return c >= '0' && c <= '9' ? NUMERIC : NONE; }
 int isAlphaNumeric(char c) {
   int alpha = isAlpha(c);
   int numeric = isNumeric(c);
-  printf("alpha = %d, numeric = %d\n", alpha, numeric);
   return (NONE != alpha) ? alpha : isNumeric(c);
 }
 
@@ -46,8 +45,6 @@ void encrypt(char *statement, int key) {
   int idx = 0, currCharType;
   while ('\0' != statement[idx]) {
     if (NONE != (currCharType = isAlphaNumeric(statement[idx]))) {
-      printf("idx = %d, char = %c type = %d\n", idx, statement[idx],
-             currCharType);
       switch (currCharType) {
         case UPPER:
           statement[idx] = (statement[idx] - 'A' + key) % 26 + 'A';
