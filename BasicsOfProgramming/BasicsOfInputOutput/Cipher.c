@@ -37,7 +37,6 @@ int isNumeric(char c) { return c >= '0' && c <= '9' ? NUMERIC : NONE; }
 
 int isAlphaNumeric(char c) {
   int alpha = isAlpha(c);
-  int numeric = isNumeric(c);
   return (NONE != alpha) ? alpha : isNumeric(c);
 }
 
