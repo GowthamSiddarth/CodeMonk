@@ -11,3 +11,7 @@ Note: The cipher only encrypts Alpha and Numeric. (A-Z, a-z, and 0-9) . All Symb
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/cipher-1/
 
 */
+
+int isUpper(char c) {
+    return c >= 'A' && c <= 'Z';
+}
