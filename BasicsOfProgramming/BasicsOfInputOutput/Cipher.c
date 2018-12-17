@@ -19,3 +19,7 @@ int isUpper(char c) {
 int isLower(char c) {
     return c >= 'a' && c <= 'z';
 }
+
+int isAlpha(char c) {
+    return isUpper(c) || isLower(c);
+}
