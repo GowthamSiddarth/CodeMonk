@@ -23,3 +23,7 @@ int isLower(char c) {
 int isAlpha(char c) {
     return isUpper(c) || isLower(c);
 }
+
+int isNumeric(char c) {
+    return c >= '0' && c <= '9';
+}
