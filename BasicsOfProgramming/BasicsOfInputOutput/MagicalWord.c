@@ -34,4 +34,51 @@ Constraints:
 1 <= T <= 100
 
 1 <= |S| <= 500
+
+https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/magical-word/
 */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int primesBetween1To100[25] = {2,  3,  5,  7,  11, 13, 17, 19, 23,
+                               29, 31, 37, 41, 43, 47, 53, 59, 61,
+                               67, 71, 73, 79, 83, 89, 97};
+
+char getClosestChar(char c, int primeCharBefore, int primeCharAfter) {
+  int dist1 = abs(c - primeCharBefore);
+  int dist2 = abs(c - primeCharAfter);
+  return dist1 <= dist2 ? primeCharBefore : primeCharAfter;
+}
+
+void convertToMagicalWord(char *word) {
+  int idx = 0;
+  while ('\0' != word[idx]) {
+    int low = 0, high = 25;
+
+    while (low <= high) {
+      int mid = low + (high - low) / 2;
+
+      if (primesBetween1To100[mid] < word[idx]) {
+        low = mid + 1;
+      } else if (primesBetween1To100[mid] > word[idx]) {
+        high = mid - 1;
+      } else {
+        break;
+      }
+    }
+
+    if (low > high) {
+      if (25 == low) {
+        word[idx] = primesBetween1To100[high];
+      } else if (-1 == high) {
+        word[idx] = primesBetween1To100[low];
+      } else {
+        word[idx] = getClosestChar(word[idx], primesBetween1To100[low],
+                                   primesBetween1To100[high]);
+      }
+    }
+
+    idx++;
+  }
+}
