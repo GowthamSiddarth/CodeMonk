@@ -19,36 +19,61 @@ Symbols, such as - , ; %, remain unencrypted.
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/cipher-1/
 
 */
+#include <stdio.h>
+#include <string.h>
+
 #define UPPER 1
 #define LOWER 2
 #define NUMERIC 3
 #define NONE 0
 
-int isUpper(char c) { return c >= 'A' && c <= 'Z' ? UPPER : NONE; }
+int isUpper(char c) { return c >= 'A' && c <= 'Z'; }
 
-int isLower(char c) { return c >= 'a' && c <= 'z' ? LOWER : NONE; }
+int isLower(char c) { return c >= 'a' && c <= 'z'; }
 
-int isAlpha(char c) { return isUpper(c) || isLower(c); }
+int isAlpha(char c) { return isUpper(c) ? UPPER : isLower(c) ? LOWER : NONE; }
 
 int isNumeric(char c) { return c >= '0' && c <= '9' ? NUMERIC : NONE; }
 
-int isAlphaNumeric(char c) { return isAlpha(c) || isNumeric(c); }
+int isAlphaNumeric(char c) {
+  int alpha = isAlpha(c);
+  int numeric = isNumeric(c);
+  printf("alpha = %d, numeric = %d\n", alpha, numeric);
+  return (NONE != alpha) ? alpha : isNumeric(c);
+}
 
 void encrypt(char *statement, int key) {
   int idx = 0, currCharType;
   while ('\0' != statement[idx]) {
     if (NONE != (currCharType = isAlphaNumeric(statement[idx]))) {
+      printf("idx = %d, char = %c type = %d\n", idx, statement[idx],
+             currCharType);
       switch (currCharType) {
         case UPPER:
-          statement[idx] = (statement[idx] - 'A' + key) % 26;
+          statement[idx] = (statement[idx] - 'A' + key) % 26 + 'A';
           break;
         case LOWER:
-          statement[idx] = (statement[idx] - 'a' + key) % 26;
+          statement[idx] = (statement[idx] - 'a' + key) % 26 + 'a';
           break;
         case NUMERIC:
-          statement[idx] = (statement[idx] - '0' + key) % 26;
+          statement[idx] = (statement[idx] - '0' + key) % 10 + '0';
           break;
       }
     }
+
+    idx++;
   }
+}
+
+int main() {
+  char statement[10001];
+  memcpy(statement, "All-convoYs-9-be:Alert1.", 25);
+  int key = 4;
+
+  printf("%s\n", statement);
+  printf("%d\n", key);
+  encrypt(statement, key);
+  printf("%s\n", statement);
+
+  return 0;
 }
