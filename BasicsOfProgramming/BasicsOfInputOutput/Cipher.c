@@ -11,13 +11,16 @@ Note: The cipher only encrypts Alpha and Numeric. (A-Z, a-z, and 0-9) . All Symb
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/cipher-1/
 
 */
+#define UPPER 1
+#define LOWER 2
+#define NUMERIC 3
 
 int isUpper(char c) {
-    return c >= 'A' && c <= 'Z';
+    return c >= 'A' && c <= 'Z' ? UPPER : 0;
 }
 
 int isLower(char c) {
-    return c >= 'a' && c <= 'z';
+    return c >= 'a' && c <= 'z' ? LOWER : 0;
 }
 
 int isAlpha(char c) {
@@ -25,7 +28,7 @@ int isAlpha(char c) {
 }
 
 int isNumeric(char c) {
-    return c >= '0' && c <= '9';
+    return c >= '0' && c <= '9' ? NUMERIC : 0;
 }
 
 int isAlphaNumeric(char c) {
