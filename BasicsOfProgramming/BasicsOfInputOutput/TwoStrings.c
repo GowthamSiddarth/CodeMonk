@@ -21,3 +21,31 @@ Note : Use Hashing Concept Only . Try to do it in O(string length).
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/two-strings-4/
 */
+
+int isIdentical(char *s1, char *s2) {
+    int ascii[256] = {0};
+    int idx;
+
+    idx = 0;
+    while ('\0' != s1[idx]) {
+        ascii[s1[idx]] = ascii[s1[idx]] + 1;
+        idx++;
+    }
+
+    idx = 0;
+    while ('\0' != s2[idx]) {
+        ascii[s2[idx]] = ascii[s2[idx]] - 1;
+        idx++;
+    }
+
+    idx = 0;
+    while (idx < 256) {
+        if (0 != ascii[idx]) {
+            return 0;
+        }
+
+        idx++;
+    }
+
+    return 1;
+}
