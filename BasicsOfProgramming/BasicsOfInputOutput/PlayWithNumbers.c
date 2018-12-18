@@ -17,15 +17,37 @@ print a single integer denoting the answer.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/play-with-numbers-2/
 */
+#include <stdio.h>
 
 void getCumulativeSumArray(int *arr, int len, int *cumulativeSumArray) {
-    int cumulativeSum = 0;
-    for (int idx = 0; idx < len; idx++) {
-        cumulativeSum += arr[idx];
-        cumulativeSumArray[idx] = cumulativeSum;
-    }
+  int cumulativeSum = 0;
+  for (int idx = 0; idx < len; idx++) {
+    cumulativeSum += arr[idx];
+    cumulativeSumArray[idx] = cumulativeSum;
+  }
 }
 
 int expected(int *cumulativeSumArray, int from, int to) {
-    return (cumulativeSumArray[to - 1] - ((from > 1) ? cumulativeSumArray[from - 2] : 0)) / (to - from + 1);
+  return (cumulativeSumArray[to - 1] -
+          ((from > 1) ? cumulativeSumArray[from - 2] : 0)) /
+         (to - from + 1);
+}
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int cumulativeSumArray[5] = {0};
+    getCumulativeSumArray(arr, len, cumulativeSumArray);
+
+    int from[3] = {1, 2, 2};
+    int to[3] = {5, 4, 5};
+
+    int numOfQueries = sizeof(from) / sizeof(from[0]);
+    for (int i = 0; i < numOfQueries; i++) {
+        int expectedValue = expected(cumulativeSumArray, from[i], to[i]);
+        printf("%d\n", expectedValue);
+    }
+
+    return 0;
 }
