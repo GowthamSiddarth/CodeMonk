@@ -21,6 +21,8 @@ Note : Use Hashing Concept Only . Try to do it in O(string length).
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/two-strings-4/
 */
+#include <stdio.h>
+#include <string.h>
 
 int isIdentical(char *s1, char *s2) {
     int ascii[256] = {0};
@@ -48,4 +50,15 @@ int isIdentical(char *s1, char *s2) {
     }
 
     return 1;
+}
+
+int main () {
+    char s1[6], s2[6];
+    memcpy(s1, "sumit", 5);
+    memcpy(s2, "mitsu", 5);
+
+    int res = isIdentical(s1, s2);
+    printf("%s\n", 1 == res ? "YES" : "NO");
+
+    return 0;
 }
