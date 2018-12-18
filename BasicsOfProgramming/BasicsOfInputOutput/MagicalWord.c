@@ -40,6 +40,7 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int primesBetween1To100[25] = {2,  3,  5,  7,  11, 13, 17, 19, 23,
                                29, 31, 37, 41, 43, 47, 53, 59, 61,
@@ -74,11 +75,22 @@ void convertToMagicalWord(char *word) {
       } else if (-1 == high) {
         word[idx] = primesBetween1To100[low];
       } else {
-        word[idx] = getClosestChar(word[idx], primesBetween1To100[low],
-                                   primesBetween1To100[high]);
+        word[idx] = getClosestChar(word[idx], primesBetween1To100[high],
+                                   primesBetween1To100[low]);
       }
     }
 
     idx++;
   }
+}
+
+int main() {
+  char word[10];
+  memcpy(word, "AFREEN", 7);
+
+  printf("%s\n", word);
+  convertToMagicalWord(word);
+  printf("%s\n", word);
+
+  return 0;
 }
