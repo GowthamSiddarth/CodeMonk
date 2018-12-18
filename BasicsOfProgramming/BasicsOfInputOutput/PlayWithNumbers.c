@@ -25,3 +25,7 @@ void getCumulativeSumArray(int *arr, int len, int *cumulativeSumArray) {
         cumulativeSumArray[idx] = cumulativeSum;
     }
 }
+
+int expected(int *cumulativeSumArray, int from, int to) {
+    return (cumulativeSumArray[to - 1] - ((from > 1) ? cumulativeSumArray[from - 2] : 0)) / (to - from + 1);
+}
