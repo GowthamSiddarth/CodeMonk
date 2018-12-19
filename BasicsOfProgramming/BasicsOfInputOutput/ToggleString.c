@@ -26,3 +26,7 @@ int isUpper(char c) {
 int isLower(char c) {
     return c >= 'a' && c <= 'z' ? true : false;
 }
+
+int toUpper(char c) {
+    return c + ('a' - 'A');
+}
