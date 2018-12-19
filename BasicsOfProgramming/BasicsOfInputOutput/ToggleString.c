@@ -16,3 +16,9 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/modify-the-string/
 */
+#define true 1
+#define false 0
+
+int isUpper(char c) {
+    return c >= 'A' && c <= 'Z' ? true : false;
+}
