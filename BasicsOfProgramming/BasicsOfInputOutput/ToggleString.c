@@ -27,10 +27,23 @@ int isLower(char c) {
     return c >= 'a' && c <= 'z' ? true : false;
 }
 
-int toUpper(char c) {
+char toUpper(char c) {
     return c + ('a' - 'A');
 }
 
-int toLower(char c) {
+char toLower(char c) {
     return c - ('a' - 'A');
+}
+
+void toggle(char *s) {
+    int idx = 0;
+    while ('\0' != s[idx]) {
+        if (isUpper(s[idx])) {
+            s[idx] = toLower(s[idx]);
+        } else if (isLower(s[idx])) {
+            s[idx] = toUpper(s[idx]);
+        }
+
+        idx++;
+    }
 }
