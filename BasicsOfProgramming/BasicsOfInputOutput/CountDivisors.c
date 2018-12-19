@@ -13,7 +13,16 @@ Constraints
 1 <= l <= r <= 1000
 1 <= k <= 1000
 */
+#include <stdio.h>
 
 int countDivisors(int l, int r, int k) {
     return r / k - ((0 == (l % k)) ? l / k : l / k + 1) + 1;
+}
+
+int main() {
+    int l = 1, r = 10, k = 5;
+    int res = countDivisors(l, r, k);
+    printf("%d", res);
+
+    return 0;    
 }
