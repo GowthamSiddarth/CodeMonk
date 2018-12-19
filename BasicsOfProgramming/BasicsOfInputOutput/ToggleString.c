@@ -30,3 +30,7 @@ int isLower(char c) {
 int toUpper(char c) {
     return c + ('a' - 'A');
 }
+
+int toLower(char c) {
+    return c - ('a' - 'A');
+}
