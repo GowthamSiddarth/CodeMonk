@@ -19,6 +19,9 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 #define true 1
 #define false 0
 
+#include <stdio.h>
+#include <string.h>
+
 int isUpper(char c) {
     return c >= 'A' && c <= 'Z' ? true : false;
 }
@@ -28,11 +31,11 @@ int isLower(char c) {
 }
 
 char toUpper(char c) {
-    return c + ('a' - 'A');
+    return c - ('a' - 'A');
 }
 
 char toLower(char c) {
-    return c - ('a' - 'A');
+    return c + ('a' - 'A');
 }
 
 void toggle(char *s) {
@@ -46,4 +49,15 @@ void toggle(char *s) {
 
         idx++;
     }
+}
+
+int main() {
+    char s[6] = {'\0'};
+    memcpy(s, "abcdE", 5);
+
+    printf("%s\n", s);
+    toggle(s);
+    printf("%s\n", s);
+
+    return 0;
 }
