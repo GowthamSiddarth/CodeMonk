@@ -37,6 +37,8 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 #define UPLOAD_ANOTHER 2
 #define ACCEPTED 3
 
+#include <stdio.h>
+
 int uploadPicture(int threshold, int width, int height) {
     if (width < threshold || height < threshold) {
         return UPLOAD_ANOTHER;
@@ -45,4 +47,23 @@ int uploadPicture(int threshold, int width, int height) {
     } else {
         return CROP_IT;
     }
+}
+
+int main () {
+    int l = 180;
+    int width = 180, height = 180;
+
+    switch (uploadPicture(l, width, height)) {
+        case CROP_IT:
+            printf("CROP IT\n");
+            break;
+        case ACCEPTED:
+            printf("ACCEPTED\n");
+            break;
+        case UPLOAD_ANOTHER:
+            printf("UPLOAD ANOTHER\n");
+            break;
+    }
+
+    return 0;
 }
