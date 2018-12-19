@@ -13,3 +13,7 @@ Constraints
 1 <= l <= r <= 1000
 1 <= k <= 1000
 */
+
+int countDivisors(int l, int r, int k) {
+    return r / k - ((0 == (l % k)) ? l / k : l / k + 1) + 1;
+}
