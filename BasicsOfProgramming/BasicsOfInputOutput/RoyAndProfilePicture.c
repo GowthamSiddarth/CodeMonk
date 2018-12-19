@@ -33,3 +33,16 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/roy-and-profile-picture/
 */
+#define CROP_IT 1
+#define UPLOAD_ANOTHER 2
+#define ACCEPTED 3
+
+int uploadPicture(int threshold, int width, int height) {
+    if (width < threshold || height < threshold) {
+        return UPLOAD_ANOTHER;
+    } else if (width == height) {
+        return ACCEPTED;
+    } else {
+        return CROP_IT;
+    }
+}
