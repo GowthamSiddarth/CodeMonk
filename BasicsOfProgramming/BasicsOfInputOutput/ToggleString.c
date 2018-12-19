@@ -22,3 +22,7 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 int isUpper(char c) {
     return c >= 'A' && c <= 'Z' ? true : false;
 }
+
+int isLower(char c) {
+    return c >= 'a' && c <= 'z' ? true : false;
+}
