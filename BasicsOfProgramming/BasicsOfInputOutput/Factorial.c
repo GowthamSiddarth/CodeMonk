@@ -16,6 +16,7 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/find-factorial/
 */
+#include <stdio.h>
 
 int factorial(int n) {
     int prod = 1;
@@ -25,4 +26,12 @@ int factorial(int n) {
     }
 
     return prod;
+}
+
+int main() {
+    int n = 10;
+    int res = factorial(n);
+    printf("%d", res);
+
+    return 0;
 }
