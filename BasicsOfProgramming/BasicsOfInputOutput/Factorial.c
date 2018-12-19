@@ -16,3 +16,13 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/find-factorial/
 */
+
+int factorial(int n) {
+    int prod = 1;
+    while (n > 1) {
+        prod = prod * n;
+        n--;
+    }
+
+    return prod;
+}
