@@ -17,6 +17,8 @@ String S consists of lowercase English Alphabets only.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/palindrome-check-2/
 */
+#include <stdio.h>
+#include <string.h>
 
 int lenOfString(char *s) {
     int idx = 0;
@@ -28,7 +30,7 @@ int lenOfString(char *s) {
 }
 
 int isPalindrome(char *s) {
-    int right = lenOfString(s);
+    int right = lenOfString(s) - 1;
     int left = 0;
 
     while (left < right && s[left] == s[right]) {
@@ -37,4 +39,15 @@ int isPalindrome(char *s) {
     }
 
     return left >= right;
+}
+
+int main() {
+    char s[101];
+    memcpy(s, "abababa", 7);
+    printf("%s\n", s);
+    
+    int res = isPalindrome(s);
+    printf("%s", 1 == res ? "YES" : "NO");
+
+    return 0;
 }
