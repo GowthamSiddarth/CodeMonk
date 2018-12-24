@@ -32,6 +32,7 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/best-index-1-45a2f8ff/
 */
+#include <limits.h>
 
 int specialSum(int *arr, int len, int idx) {
     int sum = 0, limit = 1;
@@ -46,4 +47,18 @@ int specialSum(int *arr, int len, int idx) {
     }
 
     return sum;
+}
+
+int bestIndexWithSpecialSum(int *arr, int len) {
+    int maxSpecialSum = INT_MIN;
+    int bestIndex;
+    for (int idx = 0; idx < len; idx++) {
+        int currSpecialSum = specialSum(arr, len, idx);
+        if (currSpecialSum > maxSpecialSum) {
+            maxSpecialSum = currSpecialSum;
+            bestIndex = idx;
+        }
+    }
+
+    return bestIndex;
 }
