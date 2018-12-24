@@ -23,3 +23,7 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 int isVowel(char c) {
     return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c || 'Y' == c;
 }
+
+int isEven(int num) {
+    return 0 == (num & 1);
+}
