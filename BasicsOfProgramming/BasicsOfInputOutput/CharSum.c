@@ -28,3 +28,13 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/char-sum-2d3a6ab5/
 */
+
+int getWeightOfString(char *s) {
+    int idx = 0, weight = 0;
+    while ('\0' != s[idx]) {
+        weight += s[idx] - 'a' + 1;
+        idx++;
+    }
+
+    return weight;
+}
