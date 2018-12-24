@@ -23,3 +23,9 @@ CONSTRAINTS
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/tds-and-his-breakup/
 */
+
+void findFriendsWithMinSkill(int *skills, int threshold, int *res) {
+    for (int idx = 0; idx < threshold; idx++) {
+        res[idx] = skills[idx] >= threshold ? 1 : 0;
+    }
+}
