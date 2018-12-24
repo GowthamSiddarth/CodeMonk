@@ -18,3 +18,7 @@ by 11, output the message, “Illegal ISBN”.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/sum-it-if-you-can-4867f851/
 */
+
+int isDivisible(int dividend, int divisor) {
+    return 0 == (dividend % divisor);
+}
