@@ -14,3 +14,12 @@ Constraints:
 1 <= N <= 1000
 1 <= A[i] <= 1000
 */
+
+int findProduct(int *arr, int len, int modulo) {
+    int product = 1;
+    for (int i = 0; i < len; i++) {
+        product = (product * arr[i]) % modulo;
+    }
+
+    return product;
+}
