@@ -33,10 +33,11 @@ Constraints
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/best-index-1-45a2f8ff/
 */
 #include <limits.h>
+#include <stdio.h>
 
 int specialSum(int *arr, int len, int idx) {
     int sum = 0, limit = 1;
-    while (idx + limit < len) {
+    while (idx + limit <= len) {
         int tempLimit = limit;
         while (tempLimit--) {
             sum += arr[idx];
