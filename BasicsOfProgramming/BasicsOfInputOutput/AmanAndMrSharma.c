@@ -29,3 +29,16 @@ Print total number of toffees Aman would finally have at the end of d days.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/aman-mrsharma/
 */
+#define pi 22 / 7
+
+int getNumOfToffeesGainedByAman(int numOfTargets, int *target, int *horlicks) {
+    int count = 0;
+
+    for (int idx = 0; idx < numOfTargets; idx++) {
+        if ((100 * horlicks[idx]) >= (2.0 * target[idx] * pi)) {
+            count++;
+        }
+    }
+
+    return count;
+}
