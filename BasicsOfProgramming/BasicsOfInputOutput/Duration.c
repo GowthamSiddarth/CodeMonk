@@ -16,6 +16,7 @@ N lines with duration HH MM(hours and minutes separated by space)
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/duration/description/
 */
+#include <stdio.h>
 
 void convertMinutesToHoursAndMinutes(int totalMinutes, int *hours, int *minutes) {
     *hours = totalMinutes / 60;
@@ -25,4 +26,16 @@ void convertMinutesToHoursAndMinutes(int totalMinutes, int *hours, int *minutes)
 void getDuration(int startHours, int startMinutes, int endHours, int endMinutes, int *totalHours, int *totalMinutes) {
     int totalDurationInMinutes = (endHours * 60 + endMinutes) - (startHours * 60 + startMinutes);
     convertMinutesToHoursAndMinutes(totalDurationInMinutes, totalHours, totalMinutes);
+}
+
+int main() {
+    int startHours = 2, startMinutes = 42, endHours = 8, endMinutes = 23;
+    int hours, minutes;
+
+    printf("%d %d %d %d\n", startHours, startMinutes, endHours, endMinutes);
+    getDuration(startHours, startMinutes, endHours, endMinutes, &hours, &minutes);
+    
+    printf("%d %d", hours, minutes);
+
+    return 0;
 }
