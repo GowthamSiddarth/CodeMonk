@@ -24,3 +24,25 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/bricks-game-5140869d/
 */
+#define true 1
+
+char* getWorkerNameForLastBrick(int numOfBricks) {
+    int itr = 1;
+    int patluCount, motuCount, totalCount = 0;
+
+    while (true) {
+        patluCount = itr;
+        totalCount += patluCount;
+        if (totalCount >= numOfBricks) {
+            return "PATLU";
+        }
+
+        motuCount = 2 * itr;
+        totalCount += motuCount;
+        if (totalCount >= numOfBricks) {
+            return "MOTU";
+        }
+
+        itr++;
+    }
+}
