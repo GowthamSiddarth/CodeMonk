@@ -20,3 +20,25 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/e-maze-in-1aa4e2ac/
 */
+
+void navigate(char *steps, int *startX, int *startY) {
+    int idx = 0;
+    while ('\0' != steps[idx]) {
+        switch (steps[idx]) {
+            case 'L':
+                *startX = *startX - 1;
+                break;
+            case 'R':
+                *startX = *startX + 1;
+                break;
+            case 'U':
+                *startY = *startY + 1;
+                break;
+            case 'D':
+                *startY = *startY - 1;
+                break;
+        }
+
+        idx++;
+    }
+}
