@@ -63,3 +63,13 @@ int bestIndexWithSpecialSum(int *arr, int len) {
 
     return bestIndex;
 }
+
+int main() {
+    int arr[] = {2, 1, 3, 9, 2, 4, -10, -9, 1, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int bestIndex = bestIndexWithSpecialSum(arr, len);
+    printf("%d", bestIndex);
+    
+    return 0;
+}
