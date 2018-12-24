@@ -21,27 +21,25 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 #include <stdio.h>
 #include <string.h>
 
-int isDivisible(int dividend, int divisor) {
-    return 0 == (dividend % divisor);
-}
+int isDivisible(int dividend, int divisor) { return 0 == (dividend % divisor); }
 
-char* validateISBN(char *isbn) {
-    int idx = 0, total = 0;
-    while ('\0' != isbn[idx]) {
-        total += (idx + 1) * (isbn[idx] - '0');
-        idx++;
-    }
+char *validateISBN(char *isbn) {
+  int idx = 0, total = 0;
+  while ('\0' != isbn[idx]) {
+    total += (idx + 1) * (isbn[idx] - '0');
+    idx++;
+  }
 
-    return isDivisible(total, 11) ? "Legal ISBN" : "Illegal ISBN";
+  return isDivisible(total, 11) ? "Legal ISBN" : "Illegal ISBN";
 }
 
 int main() {
-    char isbn[11];
-    memcpy(isbn, "1401601499", 11);
+  char isbn[11];
+  memcpy(isbn, "1401601499", 11);
 
-    printf("%s\n", isbn);
-    char *res = validateISBN(isbn);
-    printf("%s", res);
+  printf("%s\n", isbn);
+  char *res = validateISBN(isbn);
+  printf("%s", res);
 
-    return 0;
+  return 0;
 }
