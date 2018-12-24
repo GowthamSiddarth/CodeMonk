@@ -22,3 +22,7 @@ CONSTRAINTS:
 void printSideRails() {
     printf("*   *\n*   *\n");
 }
+
+void printStep() {
+    printf("*****\n");
+}
