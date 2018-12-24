@@ -19,3 +19,7 @@ Print "valid" (without quotes) if the tag is valid, print "invalid" otherwise
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/cartag-948c2b02/
 */
+
+int isVowel(char c) {
+    return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c || 'Y' == c;
+}
