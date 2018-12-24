@@ -23,6 +23,9 @@ For e.g. -> For the word RAM - MAR,ARM,AMR,RMA etc. are few anagrams.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/anagrams-651/
 */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int minNumOfCharsToBeDeletedToMakeAnagrams(char *s1, char *s2) {
     int count[256] = {0};
@@ -36,14 +39,25 @@ int minNumOfCharsToBeDeletedToMakeAnagrams(char *s1, char *s2) {
 
     idx = 0;
     while ('\0' != s2[idx]) {
-        count[s2[idx]] = (0 == count[s2[idx]] ? 1 : count[s2[idx]] - 1);
+        count[s2[idx]] = count[s2[idx]] - 1;
         idx++;
     }
 
     int total = 0;
     for (idx = 0; idx < 256; idx++) {
-        total = total + count[idx];
+        total = total + abs(count[idx]);
     }
 
     return total;
+}
+
+int main() {
+    char s1[10001], s2[10001];
+    memcpy(s1, "cde", 4);
+    memcpy(s2, "aba", 4);
+
+    int res = minNumOfCharsToBeDeletedToMakeAnagrams(s1, s2);
+    printf("%d", res);
+
+    return 0;
 }
