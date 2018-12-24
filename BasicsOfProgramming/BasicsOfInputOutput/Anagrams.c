@@ -23,3 +23,27 @@ For e.g. -> For the word RAM - MAR,ARM,AMR,RMA etc. are few anagrams.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/anagrams-651/
 */
+
+int minNumOfCharsToBeDeletedToMakeAnagrams(char *s1, char *s2) {
+    int count[256] = {0};
+    int idx;
+
+    idx = 0;
+    while ('\0' != s1[idx]) {
+        count[s1[idx]] = count[s1[idx]] + 1;
+        idx++;
+    }
+
+    idx = 0;
+    while ('\0' != s2[idx]) {
+        count[s2[idx]] = (0 == count[s2[idx]] ? 1 : count[s2[idx]] - 1);
+        idx++;
+    }
+
+    int total = 0;
+    for (idx = 0; idx < 256; idx++) {
+        total = total + count[idx];
+    }
+
+    return total;
+}
