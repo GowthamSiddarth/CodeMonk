@@ -30,6 +30,7 @@ Print total number of toffees Aman would finally have at the end of d days.
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/aman-mrsharma/
 */
 #define pi 22 / 7
+#include <stdio.h>
 
 int getNumOfToffeesGainedByAman(int numOfTargets, int *target, int *horlicks) {
     int count = 0;
@@ -41,4 +42,15 @@ int getNumOfToffeesGainedByAman(int numOfTargets, int *target, int *horlicks) {
     }
 
     return count;
+}
+
+int main() {
+    int horlicks[] = {2, 2, 2};
+    int target[] = {3, 5, 1};
+    int numOfTargets = sizeof(target) / sizeof(target[0]);
+
+    int res = getNumOfToffeesGainedByAman(numOfTargets, target, horlicks);
+    printf("%d", res);
+
+    return 0;
 }
