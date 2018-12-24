@@ -35,8 +35,8 @@ char * validateTruck(char *tag, int letterIdx, int *digitIndices, int numOfDigit
         return "invalid";
     }
 
-    for (int i = 0; i < numOfDigits - 1; i++) {
-        if (!isEven(tag[digitIndices[i] + tag[digitIndices[i + 1]]])) {
+    for (int i = 0; i < numOfDigits - 1; i++) {        
+        if (!isEven(tag[digitIndices[i]] - '0' + tag[digitIndices[i + 1]] - '0')) {
             return "invalid";
         }
     }
@@ -46,7 +46,7 @@ char * validateTruck(char *tag, int letterIdx, int *digitIndices, int numOfDigit
 
 int main() {
     char tag[10];
-    memcpy(tag, "12X345-67", 10);
+    memcpy(tag, "13X579-17", 10);
 
     int letterIdx = 2;
     int digitIndices[] = {0, 1, 3, 4, 5, 7, 8};
