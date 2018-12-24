@@ -21,3 +21,8 @@ void convertMinutesToHoursAndMinutes(int totalMinutes, int *hours, int *minutes)
     *hours = totalMinutes / 60;
     *minutes = totalMinutes % 60;
 }
+
+void getDuration(int startHours, int startMinutes, int endHours, int endMinutes, int *totalHours, int *totalMinutes) {
+    int totalDurationInMinutes = (endHours * 60 + endMinutes) - (startHours * 60 + startMinutes);
+    convertMinutesToHoursAndMinutes(totalDurationInMinutes, totalHours, totalMinutes);
+}
