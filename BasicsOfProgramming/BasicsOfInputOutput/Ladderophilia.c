@@ -35,3 +35,10 @@ void printLadder(int numOfSteps) {
         printSideRails();
     }
 }
+
+int main() {
+    int n = 4;
+    printLadder(4);
+
+    return 0;
+}
