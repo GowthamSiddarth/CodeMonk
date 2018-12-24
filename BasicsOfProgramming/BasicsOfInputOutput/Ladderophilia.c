@@ -26,3 +26,12 @@ void printSideRails() {
 void printStep() {
     printf("*****\n");
 }
+
+void printLadder(int numOfSteps) {
+    printSideRails();
+
+    while(numOfSteps--) {
+        printStep();
+        printSideRails();
+    }
+}
