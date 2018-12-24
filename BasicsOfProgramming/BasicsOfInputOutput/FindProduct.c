@@ -14,6 +14,8 @@ Modulo 10^9 + 7.
 Constraints:
 1 <= N <= 1000
 1 <= A[i] <= 1000
+
+https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/find-product/
 */
 #include <stdio.h>
 
