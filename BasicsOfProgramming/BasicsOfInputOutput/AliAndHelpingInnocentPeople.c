@@ -27,3 +27,17 @@ int isVowel(char c) {
 int isEven(int num) {
     return 0 == (num & 1);
 }
+
+char * validateTruck(char *tag, int letterIdx, int *digitIndices, int numOfDigits) {
+    if (isVowel(tag[letterIdx])) {
+        return "invalid";
+    }
+
+    for (int i = 0; i < numOfDigits - 1; i++) {
+        if (!isEven(tag[digitIndices[i] + tag[digitIndices[i + 1]]])) {
+            return "invalid";
+        }
+    }
+
+    return "valid";
+}
