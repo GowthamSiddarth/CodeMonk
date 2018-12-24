@@ -22,3 +22,13 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 int isDivisible(int dividend, int divisor) {
     return 0 == (dividend % divisor);
 }
+
+char* validateISBN(char *isbn) {
+    int idx = 0, total = 0;
+    while ('\0' != isbn[idx]) {
+        total += (idx + 1) * (isbn[idx] - '0');
+        idx++;
+    }
+
+    return isDivisible(total, 11) ? "Legal ISBN" : "Illegal ISBN";
+}
