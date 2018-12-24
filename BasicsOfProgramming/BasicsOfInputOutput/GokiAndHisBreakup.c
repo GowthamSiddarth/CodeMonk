@@ -28,3 +28,15 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 int isFriendOfGoki(int skillsOfFriend, int threshold) {
     return skillsOfFriend >= threshold;
 }
+
+int main() {
+    int threshold = 100;
+    int skillsOfFriends[] = {110, 130, 90, 100, 45};
+    int numOfFriends = sizeof(skillsOfFriends) / sizeof(skillsOfFriends[0]);
+
+    for (int idx = 0; idx < numOfFriends; idx++) {
+        printf("%s\n", isFriendOfGoki(skillsOfFriends[idx], threshold) ? "YES" : "NO");
+    }
+
+    return 0;
+}
