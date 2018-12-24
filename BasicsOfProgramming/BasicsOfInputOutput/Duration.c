@@ -16,3 +16,8 @@ N lines with duration HH MM(hours and minutes separated by space)
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/duration/description/
 */
+
+void convertMinutesToHoursAndMinutes(int totalMinutes, int *hours, int *minutes) {
+    *hours = totalMinutes / 60;
+    *minutes = totalMinutes % 60;
+}
