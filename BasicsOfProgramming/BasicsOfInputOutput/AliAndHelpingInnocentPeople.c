@@ -19,6 +19,8 @@ Print "valid" (without quotes) if the tag is valid, print "invalid" otherwise
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/cartag-948c2b02/
 */
+#include <stdio.h>
+#include <string.h>
 
 int isVowel(char c) {
     return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c || 'Y' == c;
@@ -40,4 +42,18 @@ char * validateTruck(char *tag, int letterIdx, int *digitIndices, int numOfDigit
     }
 
     return "valid";
+}
+
+int main() {
+    char tag[10];
+    memcpy(tag, "12X345-67", 10);
+
+    int letterIdx = 2;
+    int digitIndices[] = {0, 1, 3, 4, 5, 7, 8};
+    int numOfDigits = sizeof(digitIndices) / sizeof(digitIndices[0]);    
+
+    char *res = validateTruck(tag, letterIdx, digitIndices, numOfDigits);
+    printf("%s", res);
+
+    return 0;
 }
