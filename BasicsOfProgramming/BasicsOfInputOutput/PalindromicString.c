@@ -26,3 +26,15 @@ int lenOfString(char *s) {
 
     return idx;
 }
+
+int isPalindrome(char *s) {
+    int right = lenOfString(s);
+    int left = 0;
+
+    while (left < right && s[left] == s[right]) {
+        left++;
+        right--;
+    }
+
+    return left >= right;
+}
