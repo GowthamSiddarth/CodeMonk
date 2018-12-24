@@ -17,3 +17,12 @@ String S consists of lowercase English Alphabets only.
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/palindrome-check-2/
 */
+
+int lenOfString(char *s) {
+    int idx = 0;
+    while('\0' != s[idx]) {
+        idx++;
+    }
+
+    return idx;
+}
