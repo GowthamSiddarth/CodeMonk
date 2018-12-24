@@ -1,7 +1,7 @@
 /**
 Goki recently had a breakup, so he wants to have some more friends in his life.
 Goki has N people who he can be friends with, so he decides to choose among them
-according to their skills set Yi(1<=i<=n). He wants atleast X skills in his
+according to their skillsOfFriends set Yi(1<=i<=n). He wants atleast X skillsOfFriends in his
 friends. Help Goki find his friends.
 
 INPUT
@@ -23,9 +23,8 @@ CONSTRAINTS
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/tds-and-his-breakup/
 */
+#include <stdio.h>
 
-void findFriendsWithMinSkill(int *skills, int threshold, int *res) {
-    for (int idx = 0; idx < threshold; idx++) {
-        res[idx] = skills[idx] >= threshold ? 1 : 0;
-    }
+int isFriendOfGoki(int skillsOfFriend, int threshold) {
+    return skillsOfFriend >= threshold;
 }
