@@ -28,30 +28,30 @@ https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-in
 #include <stdio.h>
 
 char* getWorkerNameForLastBrick(int numOfBricks) {
-    int itr = 1;
-    int patluCount, motuCount, totalCount = 0;
+  int itr = 1;
+  int patluCount, motuCount, totalCount = 0;
 
-    while (true) {
-        patluCount = itr;
-        totalCount += patluCount;
-        if (totalCount >= numOfBricks) {
-            return "PATLU";
-        }
-
-        motuCount = 2 * itr;
-        totalCount += motuCount;
-        if (totalCount >= numOfBricks) {
-            return "MOTU";
-        }
-
-        itr++;
+  while (true) {
+    patluCount = itr;
+    totalCount += patluCount;
+    if (totalCount >= numOfBricks) {
+      return "PATLU";
     }
+
+    motuCount = 2 * itr;
+    totalCount += motuCount;
+    if (totalCount >= numOfBricks) {
+      return "MOTU";
+    }
+
+    itr++;
+  }
 }
 
 int main() {
-    int numOfBricks = 19;
-    char *worker = getWorkerNameForLastBrick(numOfBricks);
-    printf("%s", worker);    
+  int numOfBricks = 19;
+  char* worker = getWorkerNameForLastBrick(numOfBricks);
+  printf("%s", worker);
 
-    return 0;
+  return 0;
 }
