@@ -28,6 +28,8 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/char-sum-2d3a6ab5/
 */
+#include <stdio.h>
+#include <string.h>
 
 int getWeightOfString(char *s) {
     int idx = 0, weight = 0;
@@ -37,4 +39,15 @@ int getWeightOfString(char *s) {
     }
 
     return weight;
+}
+
+int main() {
+    char s[101];
+    memcpy(s, "aba", 4);
+
+    printf("%s\n", s);
+    int res = getWeightOfString(s);
+    printf("%d", res);
+
+    return 0;
 }
