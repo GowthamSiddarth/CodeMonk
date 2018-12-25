@@ -35,3 +35,12 @@ int isVowel(char c) {
     return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c ||
         'a' == c || 'e' == c || 'i' == c || 'o' == c || 'u' == c;
 }
+
+int len(char *s) {
+    int idx = 0;
+    while ('\0' != s[idx]) {
+        idx++;
+    }
+
+    return idx;
+}
