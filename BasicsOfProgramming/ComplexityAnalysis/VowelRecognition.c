@@ -30,6 +30,7 @@ Input Constraints
 
 https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/practice-problems/algorithm/vowel-game-f1a1047c/
 */
+#include <stdio.h>
 
 int isVowel(char c) {
     return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c ||
@@ -59,4 +60,12 @@ int getVowelCountInAllSubStrings(char *s) {
     }
 
     return total;
+}
+
+int main() {
+    char *s = "baced";
+    int res = getVowelCountInAllSubStrings(s);
+    printf("%d", res);
+
+    return 0;
 }
