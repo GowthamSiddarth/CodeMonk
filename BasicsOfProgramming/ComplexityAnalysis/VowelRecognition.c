@@ -44,3 +44,19 @@ int len(char *s) {
 
     return idx;
 }
+
+int getVowelCountInAllSubStrings(char *s) {
+    int total = 0;
+    int idx = 0;
+    int l = len(s);
+
+    while ('\0' != s[idx]) {
+        if (isVowel(s[idx])) {
+            total = total + (l - idx) * (idx + 1);
+        }
+
+        idx++;
+    }
+
+    return total;
+}
