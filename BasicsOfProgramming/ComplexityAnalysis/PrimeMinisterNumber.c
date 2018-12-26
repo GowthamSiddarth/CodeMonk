@@ -39,3 +39,21 @@ int sumOfDigits(int num) {
 
     return sum;
 }
+
+int binarySearch(int *arr, int len, int key) {
+    int low = 0, high = len - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (key < arr[mid]) {
+            high = mid - 1;
+        } else if (key > arr[mid]) {
+            low = mid + 1;
+        } else {
+            return mid;
+        }
+    }
+
+    return -1;
+}
