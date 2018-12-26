@@ -30,6 +30,7 @@ https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-
 */
 #include <math.h>
 #include <malloc.h>
+#include <stdio.h>
 
 int sumOfDigits(int num) {
     int sum = 0;
@@ -100,4 +101,18 @@ void getPrimeNumbersTill(int limit, int *primes, int *numOfPrimes) {
 
     *numOfPrimes = j;
     free(flags);
+}
+
+void printPrimeMinisterNumbers(int low, int high) {
+    int numOfPrimes = high + 1;
+    int *primes = (int *)malloc(numOfPrimes * sizeof(int));
+    getPrimeNumbersTill(high, primes, &numOfPrimes);
+
+    int start = ceilSearch(primes, numOfPrimes, low);
+    for (int idx = start; idx < numOfPrimes; idx++) {
+        int digitsSum = sumOfDigits(primes[idx]);
+        if (-1 != binarySearch(primes, numOfPrimes, digitsSum)) {
+            printf("%d ", primes[idx]);
+        }
+    }
 }
