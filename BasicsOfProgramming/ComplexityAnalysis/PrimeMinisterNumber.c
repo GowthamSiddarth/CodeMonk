@@ -28,3 +28,14 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/practice-problems/algorithm/prime-ministers-number/
 */
+
+int sumOfDigits(int num) {
+    int sum = 0;
+
+    while (0 != num) {
+        sum = sum + num % 10;
+        num = num / 10;
+    }
+
+    return sum;
+}
