@@ -29,6 +29,7 @@ Constraints:
 https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/practice-problems/algorithm/prime-ministers-number/
 */
 #include <math.h>
+#include <malloc.h>
 
 int sumOfDigits(int num) {
     int sum = 0;
@@ -77,7 +78,8 @@ int ceilSearch(int *arr, int len, int key) {
     return low == len ? -1 : low;
 }
 
-void setPrimeNumbersTill(int *flags, int limit) {
+void getPrimeNumbersTill(int limit, int *primes, int *numOfPrimes) {
+    int *flags = (int *)calloc(limit + 1, sizeof(int));
     int root2 = sqrt(limit);
 
     for (int i = 2; i <= root2; i++) {
@@ -87,4 +89,15 @@ void setPrimeNumbersTill(int *flags, int limit) {
             }
         }
     }
+
+    int j = 0;
+    for (int i = 2; i < limit + 1; i++) {
+        if (0 == flags[i]) {
+            primes[j] = i;
+            j++;
+        }
+    }
+
+    *numOfPrimes = j;
+    free(flags);
 }
