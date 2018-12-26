@@ -28,6 +28,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/practice-problems/algorithm/prime-ministers-number/
 */
+#include <math.h>
 
 int sumOfDigits(int num) {
     int sum = 0;
@@ -74,4 +75,16 @@ int ceilSearch(int *arr, int len, int key) {
     }
 
     return low == len ? -1 : low;
+}
+
+void setPrimeNumbersTill(int *flags, int limit) {
+    int root2 = sqrt(limit);
+
+    for (int i = 2; i <= root2; i++) {
+        if (0 == flags[i]) {
+            for (int j = i * 2; j <= limit; j = j + i) {
+                flags[j] = 1;
+            }
+        }
+    }
 }
