@@ -115,4 +115,15 @@ void printPrimeMinisterNumbers(int low, int high) {
             printf("%d ", primes[idx]);
         }
     }
+
+    free(primes);
+}
+
+int main() {
+    int low = 0;
+    int high = 50;
+
+    printPrimeMinisterNumbers(low, high);
+
+    return 0;
 }
