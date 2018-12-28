@@ -42,7 +42,8 @@ void encryptByROTN(char *s, int n) {
     int idx = 0;
 
     while ('\0' != s[idx]) {
-        s[idx] = rotn(s[idx], n + charsOccurrence[s[idx]]);
-        charsOccurrence[s[idx]]++;
+        charsOccurrence[s[idx]] = charsOccurrence[s[idx]] + 1;
+        s[idx] = rotn(s[idx], n + charsOccurrence[s[idx]] - 1);        
+        idx++;
     }
 }
