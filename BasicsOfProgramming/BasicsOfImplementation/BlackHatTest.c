@@ -27,3 +27,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/rot13-modified/
 */
+
+int isUpper(char c) {
+    return c >= 'A' && c <= 'Z';
+}
