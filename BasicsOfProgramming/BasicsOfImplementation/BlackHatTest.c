@@ -36,3 +36,13 @@ char rotn(char c, int n) {
     char startLetter = isUpper(c) ? 'A' : 'a';
     return (c - startLetter + n) % 26 + startLetter;
 }
+
+void encryptByROTN(char *s, int n) {
+    int charsOccurrence[256] = {0};
+    int idx = 0;
+
+    while ('\0' != s[idx]) {
+        s[idx] = rotn(s[idx], n + charsOccurrence[s[idx]]);
+        charsOccurrence[s[idx]]++;
+    }
+}
