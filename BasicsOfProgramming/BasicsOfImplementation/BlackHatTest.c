@@ -31,3 +31,8 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 int isUpper(char c) {
     return c >= 'A' && c <= 'Z';
 }
+
+char rotn(char c, int n) {
+    char startLetter = isUpper(c) ? 'A' : 'a';
+    return (c - startLetter + n) % 26 + startLetter;
+}
