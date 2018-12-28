@@ -20,3 +20,13 @@ X and Y are non-negative integers.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/recursive-function/description/
 */
+
+int recursiveFunction(int x, int y) {
+    if (0 == x) {
+        return (y + 1) % 1000;
+    } else if (x > 0 && 0 == y) {
+        return recursiveFunction(x - 1, 1);
+    } else {
+        return recursiveFunction(x - 1, recursiveFunction(x, y - 1));
+    }
+}
