@@ -27,6 +27,8 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/rot13-modified/
 */
+#include <stdio.h>
+#include <string.h>
 
 int isUpper(char c) {
     return c >= 'A' && c <= 'Z';
@@ -46,4 +48,16 @@ void encryptByROTN(char *s, int n) {
         s[idx] = rotn(s[idx], n + charsOccurrence[s[idx]] - 1);        
         idx++;
     }
+}
+
+int main() {
+    char s[1000];
+    memcpy(s, "codeemblaze", 12);
+    int n = 13;
+
+    printf("%s\n", s);
+    encryptByROTN(s, n);
+    printf("%s", s);
+
+    return 0;
 }
