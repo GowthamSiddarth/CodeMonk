@@ -29,3 +29,15 @@ int dashes[] = {6, 2, 5, 5, 4, 5, 6, 4, 7, 6};
 int getNumOfDashes(int digit) {
     return dashes[digit];
 }
+
+int getTotalDashes(int number) {
+    int total = 0;
+
+    while (number) {
+        int digit = number % 10;
+        total = total + getNumOfDashes(digit);
+        number = number / 10;
+    }
+
+    return total;
+}
