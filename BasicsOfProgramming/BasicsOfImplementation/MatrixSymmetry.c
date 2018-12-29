@@ -52,3 +52,24 @@ int isHorizontallyIdentical(char **matrix, int rows, int cols) {
 
     return x1 >= x2 ? HORIZONTAL : NO;
 }
+
+int isVerticallyIdentical(char **matrix, int rows, int cols) {
+    int y1 = 0, y2 = cols - 1;
+
+    while (y1 < y2) {
+        int x = 0;
+
+        while (x < rows && matrix[x][y1] == matrix[x][y2]) {
+            x++;
+        }
+
+        if (x == rows) {
+            y1++;
+            y2--;
+        } else {
+            return NO;
+        }
+    }
+
+    return y1 >= y2 ? VERTICAL : NO;
+}
