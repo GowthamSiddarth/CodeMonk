@@ -27,3 +27,13 @@ Constraints :
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/matrix-symmetry/
 */
+
+int identical(char *s1, char *s2, int len) {
+    int idx = 0;
+
+    while (idx < len && s1[idx] == s2[idx]) {
+        idx++;
+    }
+
+    return idx == len;
+}
