@@ -23,6 +23,7 @@ Each character in code will be a digit ('0'-'9').
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/what-is-the-string-made-of-2/
 */
+#include <stdio.h>
 
 int dashes[] = {6, 2, 5, 5, 4, 5, 6, 4, 7, 6};
 
@@ -40,4 +41,12 @@ int getTotalDashes(int number) {
     }
 
     return total;
+}
+
+int main() {
+    int number = 12134;
+    int res = getTotalDashes(number);
+
+    printf("%d\n%d", number, res);
+    return 0;
 }
