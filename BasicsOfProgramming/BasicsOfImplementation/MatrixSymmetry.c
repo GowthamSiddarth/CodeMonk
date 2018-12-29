@@ -28,9 +28,9 @@ Constraints :
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/matrix-symmetry/
 */
 #define NO 0
-#define HORIZONTAL 2
-#define VERTICAL 4
-#define BOTH 8
+#define HORIZONTAL 1
+#define VERTICAL 2
+#define BOTH 3
 
 int isHorizontallyIdentical(char **matrix, int rows, int cols) {
     int x1 = 0, x2 = rows - 1;
@@ -72,4 +72,8 @@ int isVerticallyIdentical(char **matrix, int rows, int cols) {
     }
 
     return y1 >= y2 ? VERTICAL : NO;
+}
+
+int getMatrixSymmetry(char **matrix, int rows, int cols) {
+    return isHorizontallyIdentical(matrix, rows, cols) + isVerticallyIdentical(matrix, rows, cols);
 }
