@@ -37,73 +37,74 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 #include <stdio.h>
 
 int isHorizontallyIdentical(char matrix[ROWS][COLS], int rows, int cols) {
-    int x1 = 0, x2 = rows - 1;
+  int x1 = 0, x2 = rows - 1;
 
-    while (x1 < x2) {
-        int y = 0;
+  while (x1 < x2) {
+    int y = 0;
 
-        while (y < cols && matrix[x1][y] == matrix[x2][y]) {
-            y++;
-        }
-
-        if (y == cols) {
-            x1++;
-            x2--;
-        } else {
-            return NO;
-        }
+    while (y < cols && matrix[x1][y] == matrix[x2][y]) {
+      y++;
     }
 
-    return x1 >= x2 ? HORIZONTAL : NO;
+    if (y == cols) {
+      x1++;
+      x2--;
+    } else {
+      return NO;
+    }
+  }
+
+  return x1 >= x2 ? HORIZONTAL : NO;
 }
 
 int isVerticallyIdentical(char matrix[ROWS][COLS], int rows, int cols) {
-    int y1 = 0, y2 = cols - 1;
+  int y1 = 0, y2 = cols - 1;
 
-    while (y1 < y2) {
-        int x = 0;
+  while (y1 < y2) {
+    int x = 0;
 
-        while (x < rows && matrix[x][y1] == matrix[x][y2]) {
-            x++;
-        }
-
-        if (x == rows) {
-            y1++;
-            y2--;
-        } else {
-            return NO;
-        }
+    while (x < rows && matrix[x][y1] == matrix[x][y2]) {
+      x++;
     }
 
-    return y1 >= y2 ? VERTICAL : NO;
+    if (x == rows) {
+      y1++;
+      y2--;
+    } else {
+      return NO;
+    }
+  }
+
+  return y1 >= y2 ? VERTICAL : NO;
 }
 
 int getMatrixSymmetry(char matrix[ROWS][COLS], int rows, int cols) {
-    return isHorizontallyIdentical(matrix, rows, cols) + isVerticallyIdentical(matrix, rows, cols);
+  return isHorizontallyIdentical(matrix, rows, cols) +
+         isVerticallyIdentical(matrix, rows, cols);
 }
 
 int main() {
-    char matrix[ROWS][COLS] = {
-        "..*",
-        "**.",
-        "..*",
-    };
+  char matrix[ROWS][COLS] = {
+      "..*",
+      "**.",
+      "..*",
+  };
 
-    int res = getMatrixSymmetry(matrix, ROWS, COLS);
-    switch (res) {
-        case NO:
-            printf("NO");
-            break;
-        case VERTICAL:
-            printf("VERTICAL");
-            break;
-        case HORIZONTAL:
-            printf("HORIZONTAL");
-            break;
-        case BOTH:
-            printf("BOTH");
-            break;
-    }
-    
-    return 0;
+  int res = getMatrixSymmetry(matrix, ROWS, COLS);
+  switch (res) {
+    case NO:
+      printf("NO");
+      break;
+    case VERTICAL:
+      printf("VERTICAL");
+      break;
+    case HORIZONTAL:
+      printf("HORIZONTAL");
+      break;
+    case BOTH:
+      printf("BOTH");
+      break;
+  }
+
+  return 0;
 }
