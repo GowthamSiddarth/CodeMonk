@@ -27,13 +27,28 @@ Constraints :
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/matrix-symmetry/
 */
+#define NO 0
+#define HORIZONTAL 2
+#define VERTICAL 4
+#define BOTH 8
 
-int identical(char *s1, char *s2, int len) {
-    int idx = 0;
+int isHorizontallyIdentical(char **matrix, int rows, int cols) {
+    int x1 = 0, x2 = rows - 1;
 
-    while (idx < len && s1[idx] == s2[idx]) {
-        idx++;
+    while (x1 < x2) {
+        int y = 0;
+
+        while (y < cols && matrix[x1][y] == matrix[x2][y]) {
+            y++;
+        }
+
+        if (y == cols) {
+            x1++;
+            x2--;
+        } else {
+            return NO;
+        }
     }
 
-    return idx == len;
+    return x1 >= x2 ? HORIZONTAL : NO;
 }
