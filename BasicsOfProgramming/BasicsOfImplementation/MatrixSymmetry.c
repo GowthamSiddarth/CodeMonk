@@ -31,8 +31,12 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 #define HORIZONTAL 1
 #define VERTICAL 2
 #define BOTH 3
+#define ROWS 3
+#define COLS 3
 
-int isHorizontallyIdentical(char **matrix, int rows, int cols) {
+#include <stdio.h>
+
+int isHorizontallyIdentical(char matrix[ROWS][COLS], int rows, int cols) {
     int x1 = 0, x2 = rows - 1;
 
     while (x1 < x2) {
@@ -53,7 +57,7 @@ int isHorizontallyIdentical(char **matrix, int rows, int cols) {
     return x1 >= x2 ? HORIZONTAL : NO;
 }
 
-int isVerticallyIdentical(char **matrix, int rows, int cols) {
+int isVerticallyIdentical(char matrix[ROWS][COLS], int rows, int cols) {
     int y1 = 0, y2 = cols - 1;
 
     while (y1 < y2) {
@@ -74,6 +78,32 @@ int isVerticallyIdentical(char **matrix, int rows, int cols) {
     return y1 >= y2 ? VERTICAL : NO;
 }
 
-int getMatrixSymmetry(char **matrix, int rows, int cols) {
+int getMatrixSymmetry(char matrix[ROWS][COLS], int rows, int cols) {
     return isHorizontallyIdentical(matrix, rows, cols) + isVerticallyIdentical(matrix, rows, cols);
+}
+
+int main() {
+    char matrix[ROWS][COLS] = {
+        "..*",
+        "**.",
+        "..*",
+    };
+
+    int res = getMatrixSymmetry(matrix, ROWS, COLS);
+    switch (res) {
+        case NO:
+            printf("NO");
+            break;
+        case VERTICAL:
+            printf("VERTICAL");
+            break;
+        case HORIZONTAL:
+            printf("HORIZONTAL");
+            break;
+        case BOTH:
+            printf("BOTH");
+            break;
+    }
+    
+    return 0;
 }
