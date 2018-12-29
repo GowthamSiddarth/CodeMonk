@@ -23,3 +23,9 @@ Each character in code will be a digit ('0'-'9').
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/what-is-the-string-made-of-2/
 */
+
+int dashes[] = {6, 2, 5, 5, 4, 5, 6, 4, 7, 6};
+
+int getNumOfDashes(int digit) {
+    return dashes[digit];
+}
