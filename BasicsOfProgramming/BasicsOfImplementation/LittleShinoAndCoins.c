@@ -25,26 +25,27 @@ S consists of lowercase letters only.
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/little-shino-and-coins-3/
 */
 
-int lengthOfString(char *s) {
-    int idx = 0;
-    while ('\0' != s[idx]) {
-        idx++;
-    }
+int getNumOfSubStrWithMinDistinctChars(char *string, int minDistinctChars) {
+    int itr1 = 0, totalCount = 0;
+    while ('\0' != string[itr1]) {
+        int letters[26] = {0};
+        int itr2 = itr1, count = 0;
 
-    return idx;
-}
+        while ('\0' != string[itr2]) {
+            if (0 == letters[string[itr2] - 'a']) {
+                letters[string[itr2]] = 1;
+                count++;
 
-int getDistinctCharsWithRange(char *string, int start, int end) {
-    int chars[26] = {0};
-    int count = 0;
+                if (count == minDistinctChars) {
+                    totalCount++;
+                }
+            }
 
-    for (int idx = start; idx <= end; idx++) {
-        int hashedIdx = string[idx] - 'a';
-        if (0 == chars[hashedIdx]) {
-            count++;
-            chars[hashedIdx] = 1;
+            itr2++;
         }
-    }
 
-    return count;
+        itr1++;
+    } 
+
+    return totalCount;       
 }
