@@ -25,7 +25,7 @@ S consists of lowercase letters only.
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/little-shino-and-coins-3/
 */
 
-int getNumOfSubStrWithMinDistinctChars(char *string, int minDistinctChars) {
+int getNumOfSubStrWithDistinctChars(char *string, int numOfDistinctChars) {
     int itr1 = 0, totalCount = 0;
     while ('\0' != string[itr1]) {
         int letters[26] = {0};
@@ -33,12 +33,12 @@ int getNumOfSubStrWithMinDistinctChars(char *string, int minDistinctChars) {
 
         while ('\0' != string[itr2]) {
             if (0 == letters[string[itr2] - 'a']) {
-                letters[string[itr2]] = 1;
-                count++;
+                letters[string[itr2] - 'a'] = 1;
+                count++;                
+            }
 
-                if (count == minDistinctChars) {
-                    totalCount++;
-                }
+            if (count == numOfDistinctChars) {
+                totalCount++;
             }
 
             itr2++;
