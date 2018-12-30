@@ -41,3 +41,11 @@ Constraints :
 1 <= |S| <= 1000, where |S| denotes the length of the input string. It is
 guaranteed that at least 1 lyric in the song will be a 'b'
 */
+int lengthOfString(char *s) {
+    int idx = 0;
+    while ('\0' != s[idx]) {
+        idx++;
+    }
+
+    return idx;
+}
