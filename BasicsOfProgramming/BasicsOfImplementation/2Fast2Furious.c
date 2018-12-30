@@ -32,3 +32,45 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/2-fast-2-furious/
 */
+#define DOM 1
+#define BRIAN 2
+#define TIE 3
+
+#include <math.h>
+
+struct WinnerInfo {
+    int winner, maxChangeInSpeed;
+};
+
+struct WinnerInfo getWinnerInfo(int *speedsOfDom, int *speedsOfBrian, int numOfSpeeds) {
+    int currChangeInSpeedForDom = 0;
+    int maxChangeInSpeedForDom = 0;
+    int currChangeInSpeedForBrian = 0;
+    int maxChangeInSpeedForBrian = 0;
+
+    for (int itr = 0; itr < numOfSpeeds - 1; itr++) {
+        currChangeInSpeedForDom = abs(speedsOfDom[itr + 1] - speedsOfDom[itr]);
+        if (currChangeInSpeedForDom > maxChangeInSpeedForDom) {
+            maxChangeInSpeedForDom = currChangeInSpeedForDom;
+        }
+
+        currChangeInSpeedForBrian = abs(speedsOfBrian[itr + 1] - speedsOfBrian[itr]);
+        if (currChangeInSpeedForBrian > maxChangeInSpeedForBrian) {
+            maxChangeInSpeedForBrian = currChangeInSpeedForBrian;
+        }
+    }
+
+    struct WinnerInfo winnerInfo;
+    if (maxChangeInSpeedForDom > maxChangeInSpeedForBrian) {
+        winnerInfo.winner = DOM;
+        winnerInfo.maxChangeInSpeed = maxChangeInSpeedForDom;
+    } else if (maxChangeInSpeedForDom < maxChangeInSpeedForBrian) {
+        winnerInfo.winner = BRIAN;
+        winnerInfo.maxChangeInSpeed = maxChangeInSpeedForBrian;
+    } else {
+        winnerInfo.winner = TIE;
+        winnerInfo.maxChangeInSpeed = maxChangeInSpeedForBrian;
+    }
+
+    return winnerInfo;
+}
