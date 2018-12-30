@@ -36,6 +36,7 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 #define BRIAN 2
 #define TIE 3
 
+#include <stdio.h>
 #include <math.h>
 
 struct WinnerInfo {
@@ -73,4 +74,36 @@ struct WinnerInfo getWinnerInfo(int *speedsOfDom, int *speedsOfBrian, int numOfS
     }
 
     return winnerInfo;
+}
+
+void printIntArray(int *arr, int len) {
+    for (int idx = 0; idx < len; idx++) {
+        printf("%d ", arr[idx]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int numOfSpeeds = 3;
+    int speedsOfDom[3] = {1, 2, 3};
+    int speedsOfBrian[3] = {1, 2, 4};
+
+    printf("%d\n", numOfSpeeds);
+    printIntArray(speedsOfDom, numOfSpeeds);
+    printIntArray(speedsOfBrian, numOfSpeeds);
+
+    struct WinnerInfo res = getWinnerInfo(speedsOfDom, speedsOfBrian, numOfSpeeds);
+    switch (res.winner) {
+        case BRIAN:
+            printf("BRIAN\n%d", res.maxChangeInSpeed);
+            break;
+        case DOM:
+            printf("DOM\n%d", res.maxChangeInSpeed);
+            break;
+        case TIE:
+            printf("TIE\n%d", res.maxChangeInSpeed);
+            break;
+    }
+
+    return 0;
 }
