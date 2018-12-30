@@ -62,3 +62,24 @@ int getNextStudentIdx(int *students, int numOfStudents, int currStudentIdx) {
 
     return idx;
 }
+
+int getWinnerIdx(int numOfStudents, char *song) {
+    int *students = (int *)calloc(numOfStudents, sizeof(int));
+    int lengthOfSong = lengthOfString(song);
+
+    int numOfStudentsEliminated = 0, currLyricIdx = -1, currStudentIdx = 0;
+    while (numOfStudentsEliminated < numOfStudents - 1) {
+        char currLyric = getNextLyric(song, currLyricIdx, lengthOfSong);
+        currLyricIdx++;
+
+        if ('a' == currLyric) {
+            currStudentIdx = getNextStudentIdx(students, numOfStudents, currStudentIdx);
+        } else {
+            students[currStudentIdx] = 1;
+            numOfStudentsEliminated++;
+            currStudentIdx = getNextStudentIdx(students, numOfStudents, currStudentIdx);
+        }
+    }
+
+    return currStudentIdx;
+}
