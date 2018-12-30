@@ -24,6 +24,8 @@ S consists of lowercase letters only.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/little-shino-and-coins-3/
 */
+#include <stdio.h>
+#include <string.h>
 
 int getNumOfSubStrWithDistinctChars(char *string, int numOfDistinctChars) {
     int itr1 = 0, totalCount = 0;
@@ -48,4 +50,17 @@ int getNumOfSubStrWithDistinctChars(char *string, int numOfDistinctChars) {
     } 
 
     return totalCount;       
+}
+
+int main() {
+    int numOfDistinctChars = 3;
+    char string[5001] = {'\0'};
+    memcpy(string, "abcaa", 6);
+
+    printf("%d\n%s\n", numOfDistinctChars, string);
+
+    int res = getNumOfSubStrWithDistinctChars(string, numOfDistinctChars);
+    printf("%d", res);
+
+    return 0;
 }
