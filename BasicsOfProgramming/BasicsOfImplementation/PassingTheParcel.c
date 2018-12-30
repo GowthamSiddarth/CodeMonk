@@ -53,3 +53,12 @@ int lengthOfString(char *s) {
 char getNextLyric(char *song, int currLyricIdx, int lengthOfSong) {
     return song[(currLyricIdx + 1) % lengthOfSong];
 }
+
+int getNextStudentIdx(int *students, int numOfStudents, int currStudentIdx) {
+    int idx = currStudentIdx;
+    while (1 == students[idx]) {
+        idx = (idx + 1) % numOfStudents;
+    }
+
+    return idx;
+}
