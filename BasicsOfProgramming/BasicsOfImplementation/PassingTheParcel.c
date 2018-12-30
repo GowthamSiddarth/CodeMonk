@@ -50,27 +50,26 @@ int lengthOfString(char *s) {
     return idx;
 }
 
-char getNextLyric(char *song, int currLyricIdx, int lengthOfSong) {
-    return song[(currLyricIdx + 1) % lengthOfSong];
+int getNextLyricIdx(int currLyricIdx, int lengthOfSong) {
+    return (currLyricIdx + 1) % lengthOfSong;
 }
 
 int getNextStudentIdx(int *students, int numOfStudents, int currStudentIdx) {
-    int idx = currStudentIdx;
-    while (1 == students[idx]) {
-        idx = (idx + 1) % numOfStudents;
+    int nextStudentIdx = (currStudentIdx + 1) % numOfStudents;
+    while (1 == students[nextStudentIdx]) {
+        nextStudentIdx = (nextStudentIdx + 1) % numOfStudents;
     }
 
-    return idx;
+    return nextStudentIdx;
 }
 
 int getWinnerIdx(int numOfStudents, char *song) {
     int *students = (int *)calloc(numOfStudents, sizeof(int));
     int lengthOfSong = lengthOfString(song);
 
-    int numOfStudentsEliminated = 0, currLyricIdx = -1, currStudentIdx = 0;
+    int numOfStudentsEliminated = 0, currLyricIdx = 0, currStudentIdx = 0;
     while (numOfStudentsEliminated < numOfStudents - 1) {
-        char currLyric = getNextLyric(song, currLyricIdx, lengthOfSong);
-        currLyricIdx++;
+        char currLyric = song[currLyricIdx];
 
         if ('a' == currLyric) {
             currStudentIdx = getNextStudentIdx(students, numOfStudents, currStudentIdx);
@@ -79,6 +78,8 @@ int getWinnerIdx(int numOfStudents, char *song) {
             numOfStudentsEliminated++;
             currStudentIdx = getNextStudentIdx(students, numOfStudents, currStudentIdx);
         }
+
+        currLyricIdx = getNextLyricIdx(currLyricIdx, lengthOfSong);               
     }
 
     return currStudentIdx;
