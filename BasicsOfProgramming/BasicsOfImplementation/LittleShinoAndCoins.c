@@ -24,3 +24,18 @@ S consists of lowercase letters only.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/little-shino-and-coins-3/
 */
+
+int getDistinctCharsWithRange(char *string, int start, int end) {
+    int chars[26] = {0};
+    int count = 0;
+
+    for (int idx = start; idx <= end; idx++) {
+        int hashedIdx = string[idx] - 'a';
+        if (0 == chars[hashedIdx]) {
+            count++;
+            chars[hashedIdx] = 1;
+        }
+    }
+
+    return count;
+}
