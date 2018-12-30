@@ -49,3 +49,7 @@ int lengthOfString(char *s) {
 
     return idx;
 }
+
+char getNextLyric(char *song, int currLyricIdx, int lengthOfSong) {
+    return song[(currLyricIdx + 1) % lengthOfSong];
+}
