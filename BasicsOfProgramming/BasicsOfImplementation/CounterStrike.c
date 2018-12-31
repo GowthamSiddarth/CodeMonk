@@ -36,3 +36,7 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/counter-strike-12/
 */
+
+struct Position {
+    int x, y;
+}
