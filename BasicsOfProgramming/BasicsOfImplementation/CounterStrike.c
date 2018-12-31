@@ -36,7 +36,12 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/counter-strike-12/
 */
+#include <math.h>
 
 struct Position {
     int x, y;
+};
+
+int manhattanDistance(struct Position pos1, struct Position pos2) {
+    return abs(pos1.x - pos2.x) + abs(pos1.y - pos2.y);
 }
