@@ -28,3 +28,12 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 struct URLParsed {
     char username[101], pwd[101], profile[101], role[101], key[101];
 };
+
+int indexOf(char *string, char c, int start) {
+    int idx = start;
+    while ('\0' != string[idx] && c != string[idx]) {
+        idx++;
+    }
+
+    return '\0' == string[idx] ? -1 : idx;
+}
