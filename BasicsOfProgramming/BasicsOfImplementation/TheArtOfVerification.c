@@ -24,3 +24,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-art-of-verification/
 */
+
+struct URLParsed {
+    char username[101], pwd[101], profile[101], role[101], key[101];
+};
