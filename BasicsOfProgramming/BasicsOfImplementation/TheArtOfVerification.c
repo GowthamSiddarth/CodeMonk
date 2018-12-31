@@ -88,3 +88,13 @@ void printParsedURL(struct URLParsed urlParsed) {
     printf("role: %s\n", urlParsed.role);
     printf("key: %s\n", urlParsed.key);
 }
+
+int main() {
+    char url[1001];
+    memcpy(url, "http://www.cleartrip.com/signin/service?username=test&pwd=test&profile=developer&role=ELITE&key=manager", 104);
+
+    struct URLParsed urlParsed = parseURL(url);
+    printParsedURL(urlParsed);
+
+    return 0;
+}
