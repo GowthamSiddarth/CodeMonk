@@ -40,6 +40,7 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 #define NO 0
 
 #include <math.h>
+#include <stdio.h>
 
 struct Position {
     int x, y;
@@ -61,4 +62,15 @@ int isNaviProAtCounterStrike(struct Position *naviPositions, int numOfNaviPositi
     }
 
     return targetsShot >= (numOfTargetPositions / 2 + 1) ? YES : NO;
+}
+
+int main() {
+    int n = 3, m = 3, d = 5;
+    struct Position naviPositions[3] = {{1, 1}, {2, 2}, {3, 3}};
+    struct Position targetPositions[3] = {{1, 0}, {0, 0}, {2, 0}};
+
+    int res = isNaviProAtCounterStrike(naviPositions, n, targetPositions, m, d);
+    printf("%s", YES == res ? "YES" : "NO");
+
+    return 0;
 }
