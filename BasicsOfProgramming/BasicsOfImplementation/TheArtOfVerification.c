@@ -20,7 +20,7 @@ role: From the URL.
 key: From the URL.
 
 Constraints:
-1 <= |Length of the URL| <= 100
+1 <= |Length of the URL| <= 1000
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-art-of-verification/
 */
@@ -41,39 +41,42 @@ int indexOf(char *string, char c, int start) {
 }
 
 void stringcpy(char *src, char *dest, int startSrc, int startDest, int numOfChars) {
-    for (int itr = 0; itr < numOfChars; itr++) {
+    int itr = 0;
+    while (itr < numOfChars) {
         dest[startDest + itr] = src[startSrc + itr];
+        itr++;
     }
+    dest[itr] = '\0';
 }
 
 struct URLParsed parseURL(char *url) {
     struct URLParsed urlParsed;
-    int start, nextStartSign, nextEndSign;
+    int start, nextStartSignIdx, nextEndSignIdx;
     
     start = 0;
-    nextStartSign = indexOf(url, '=', start);
-    nextEndSign = indexOf(url, '&', start);
-    stringcpy(url, &(urlParsed.username), start, 0, nextEndSign - nextStartSign - 1);
+    nextStartSignIdx = indexOf(url, '=', start);
+    nextEndSignIdx = indexOf(url, '&', start);    
+    stringcpy(url, urlParsed.username, nextStartSignIdx + 1, 0, nextEndSignIdx - nextStartSignIdx - 1);
 
-    start = nextEndSign + 1;
-    nextStartSign = indexOf(url, '=', start);
-    nextEndSign = indexOf(url, '&', start);
-    stringcpy(url, &(urlParsed.pwd), start, 0, nextEndSign - nextStartSign - 1);
+    start = nextEndSignIdx + 1;
+    nextStartSignIdx = indexOf(url, '=', start);
+    nextEndSignIdx = indexOf(url, '&', start);
+    stringcpy(url, urlParsed.pwd, nextStartSignIdx + 1, 0, nextEndSignIdx - nextStartSignIdx - 1);
 
-    start = nextEndSign + 1;
-    nextStartSign = indexOf(url, '=', start);
-    nextEndSign = indexOf(url, '&', start);
-    stringcpy(url, &(urlParsed.profile), start, 0, nextEndSign - nextStartSign - 1);
+    start = nextEndSignIdx + 1;
+    nextStartSignIdx = indexOf(url, '=', start);
+    nextEndSignIdx = indexOf(url, '&', start);
+    stringcpy(url, urlParsed.profile, nextStartSignIdx + 1, 0, nextEndSignIdx - nextStartSignIdx - 1);
 
-    start = nextEndSign + 1;
-    nextStartSign = indexOf(url, '=', start);
-    nextEndSign = indexOf(url, '&', start);
-    stringcpy(url, &(urlParsed.role), start, 0, nextEndSign - nextStartSign - 1);
+    start = nextEndSignIdx + 1;
+    nextStartSignIdx = indexOf(url, '=', start);
+    nextEndSignIdx = indexOf(url, '&', start);    
+    stringcpy(url, urlParsed.role, nextStartSignIdx + 1, 0, nextEndSignIdx - nextStartSignIdx - 1);
 
-    start = nextEndSign + 1;
-    nextStartSign = indexOf(url, '=', start);
-    nextEndSign = indexOf(url, '\0', start);
-    stringcpy(url, &(urlParsed.key), start, 0, nextEndSign - nextStartSign - 1);
+    start = nextEndSignIdx + 1;
+    nextStartSignIdx = indexOf(url, '=', start);
+    nextEndSignIdx = strlen(url);    
+    stringcpy(url, urlParsed.key, nextStartSignIdx + 1, 0, nextEndSignIdx - nextStartSignIdx - 1);
 
     return urlParsed;
 }
