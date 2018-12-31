@@ -25,6 +25,8 @@ Constraints:
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-art-of-verification/
 */
 
+#include <string.h>
+
 struct URLParsed {
     char username[101], pwd[101], profile[101], role[101], key[101];
 };
@@ -36,4 +38,10 @@ int indexOf(char *string, char c, int start) {
     }
 
     return '\0' == string[idx] ? -1 : idx;
+}
+
+void stringcpy(char *src, char *dest, int startSrc, int startDest, int numOfChars) {
+    for (int itr = 0; itr < numOfChars; itr++) {
+        dest[startDest + itr] = src[startSrc + itr];
+    }
 }
