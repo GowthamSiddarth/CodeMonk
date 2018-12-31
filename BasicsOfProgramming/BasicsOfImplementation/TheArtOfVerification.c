@@ -45,3 +45,35 @@ void stringcpy(char *src, char *dest, int startSrc, int startDest, int numOfChar
         dest[startDest + itr] = src[startSrc + itr];
     }
 }
+
+struct URLParsed parseURL(char *url) {
+    struct URLParsed urlParsed;
+    int start, nextStartSign, nextEndSign;
+    
+    start = 0;
+    nextStartSign = indexOf(url, '=', start);
+    nextEndSign = indexOf(url, '&', start);
+    stringcpy(url, &(urlParsed.username), start, 0, nextEndSign - nextStartSign - 1);
+
+    start = nextEndSign + 1;
+    nextStartSign = indexOf(url, '=', start);
+    nextEndSign = indexOf(url, '&', start);
+    stringcpy(url, &(urlParsed.pwd), start, 0, nextEndSign - nextStartSign - 1);
+
+    start = nextEndSign + 1;
+    nextStartSign = indexOf(url, '=', start);
+    nextEndSign = indexOf(url, '&', start);
+    stringcpy(url, &(urlParsed.profile), start, 0, nextEndSign - nextStartSign - 1);
+
+    start = nextEndSign + 1;
+    nextStartSign = indexOf(url, '=', start);
+    nextEndSign = indexOf(url, '&', start);
+    stringcpy(url, &(urlParsed.role), start, 0, nextEndSign - nextStartSign - 1);
+
+    start = nextEndSign + 1;
+    nextStartSign = indexOf(url, '=', start);
+    nextEndSign = indexOf(url, '\0', start);
+    stringcpy(url, &(urlParsed.key), start, 0, nextEndSign - nextStartSign - 1);
+
+    return urlParsed;
+}
