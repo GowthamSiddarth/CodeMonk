@@ -24,8 +24,8 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-art-of-verification/
 */
-
 #include <string.h>
+#include <stdio.h>
 
 struct URLParsed {
     char username[101], pwd[101], profile[101], role[101], key[101];
@@ -76,4 +76,12 @@ struct URLParsed parseURL(char *url) {
     stringcpy(url, &(urlParsed.key), start, 0, nextEndSign - nextStartSign - 1);
 
     return urlParsed;
+}
+
+void printParsedURL(struct URLParsed urlParsed) {
+    printf("username: %s\n", urlParsed.username);
+    printf("pwd: %s\n", urlParsed.pwd);
+    printf("profile: %s\n", urlParsed.profile);
+    printf("role: %s\n", urlParsed.role);
+    printf("key: %s\n", urlParsed.key);
 }
