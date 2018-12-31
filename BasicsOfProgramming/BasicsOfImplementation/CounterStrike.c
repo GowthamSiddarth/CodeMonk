@@ -36,12 +36,29 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/counter-strike-12/
 */
+#define YES 1
+#define NO 0
+
 #include <math.h>
 
 struct Position {
     int x, y;
 };
 
-int manhattanDistance(struct Position pos1, struct Position pos2) {
+int getManhattanDistance(struct Position pos1, struct Position pos2) {
     return abs(pos1.x - pos2.x) + abs(pos1.y - pos2.y);
+}
+
+int isNaviProAtCounterStrike(struct Position *naviPositions, int numOfNaviPositions, struct Position * targetPositions, int numOfTargetPositions, int maxDistanceToShootTarget) {
+    int targetsShot = 0;
+    for (int itr1 = 0; itr1 < numOfNaviPositions; itr1++) {
+        for (int itr2 = 0; itr2 < numOfTargetPositions; itr2++) {
+            int manhattanDistance = getManhattanDistance(naviPositions[itr1], targetPositions[itr2]);
+            if (manhattanDistance <= maxDistanceToShootTarget) {
+                targetsShot++;
+            }
+        }
+    }
+
+    return targetsShot >= (numOfTargetPositions / 2 + 1) ? YES : NO;
 }
