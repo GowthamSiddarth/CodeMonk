@@ -42,6 +42,7 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#include <stdio.h>
 
 int getLongestCodingTime(char *activities) {    
     int maxCodingStreak = 0;
@@ -94,4 +95,26 @@ char * concat(int numOfStrings, ...) {
     va_end(allDaysActivities);
 
     return concatedString;
+}
+
+int main() {
+    int numOfStrings = 4;
+    char codingStreaks[365][1441] = {"SSSSEEEECCCCEECCCC", "CCCCCSSSSEEECCCCSS", "SSSSSEEESSCCCCCCCS", "EESSSSCCCCCCSSEEEE"};
+
+    int maxCodingStreakOfAllDays = 0;
+    char *totalActivitiesStreak = "";
+    for (int itr = 0; itr < numOfStrings; itr++) {
+        int maxCodingStreakOfADay = getLongestCodingTime(codingStreaks[itr]);
+
+        if (maxCodingStreakOfADay > maxCodingStreakOfAllDays) {
+            maxCodingStreakOfAllDays = maxCodingStreakOfADay;
+        }   
+
+        totalActivitiesStreak = concat(2, totalActivitiesStreak, codingStreaks[itr]);     
+    }
+
+    int maxCodingStreamFromAllActivities = getLongestCodingTime(totalActivitiesStreak);
+    printf("%d %d", maxCodingStreakOfAllDays, maxCodingStreamFromAllActivities);
+
+    return 0;
 }
