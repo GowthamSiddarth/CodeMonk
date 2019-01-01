@@ -38,3 +38,26 @@ the hidden test files strictly follow the constraints.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/roys-life-cycle/
 */
+
+int getLongestCodingTime(char *activities) {    
+    int maxCodingStreak = 0;
+    int idx = 0;
+
+    while ('\0' != activities[idx]) {
+        while ('\0' != activities[idx] && 'C' != activities[idx]) {
+            idx++;
+        }
+
+        int currCodingStreak = 0;
+        while('\0' != activities[idx] && 'C' == activities[idx]) {
+            currCodingStreak++;
+            idx++;
+        }
+
+        if (currCodingStreak > maxCodingStreak) {
+            maxCodingStreak = currCodingStreak;
+        }
+    }
+
+    return maxCodingStreak;    
+}
