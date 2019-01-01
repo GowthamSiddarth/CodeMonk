@@ -38,6 +38,10 @@ the hidden test files strictly follow the constraints.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/roys-life-cycle/
 */
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
 
 int getLongestCodingTime(char *activities) {    
     int maxCodingStreak = 0;
@@ -60,4 +64,34 @@ int getLongestCodingTime(char *activities) {
     }
 
     return maxCodingStreak;    
+}
+
+char * concat(int numOfStrings, ...) {
+    va_list allDaysActivities;
+    size_t length = 0;
+    
+    if (numOfStrings < 1) {
+        return NULL;
+    }
+
+    va_start(allDaysActivities, numOfStrings);
+    for (int itr = 0; itr < numOfStrings; itr++) {
+        char *singleDayActivities = va_arg(allDaysActivities, char *); 
+        length = length + strlen(singleDayActivities);
+    }
+    va_end(allDaysActivities);
+
+    char *concatedString = (char *)malloc(length + 1);
+
+    char *dest = concatedString;
+    va_start(allDaysActivities, numOfStrings);
+    for (int itr = 0; itr < numOfStrings; itr++) {
+        char *singleDayActivities = va_arg(allDaysActivities, char *);
+        
+        while (*dest++ = *singleDayActivities++);
+        dest--;
+    }
+    va_end(allDaysActivities);
+
+    return concatedString;
 }
