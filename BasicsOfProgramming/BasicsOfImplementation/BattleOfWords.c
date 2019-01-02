@@ -43,36 +43,62 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 #define LOSE -1
 #define DRAW 0
 
+#include <stdio.h>
+
 int getAliceStatus(char *aliceSentence, char *bobSentence) {
-    int letters[26] = {0};
-    
-    int idx = 0;
-    while ('\0' != aliceSentence[idx]) {
-        letters[aliceSentence[idx] - 'a']++;
-    }
+  int letters[26] = {0};
 
-    idx = 0;
-    while ('\0' != bobSentence[idx]) {
-        letters[bobSentence[idx] - 'a']--;
-    }
+  int idx = 0;
+  while ('\0' != aliceSentence[idx]) {
+    letters[aliceSentence[idx] - 'a']++;
+    idx++;
+  }
 
-    int numOfAliceLettersLeft = 0, numOfBobLettersLeft = 0;
-    for (int itr = 0; itr < 26; itr++) {
-        if (letters[itr] > 0) {
-            numOfAliceLettersLeft++;
-        } else if (letters[itr] < 0) {
-            numOfBobLettersLeft++;
-        }
-    }
+  idx = 0;
+  while ('\0' != bobSentence[idx]) {
+    letters[bobSentence[idx] - 'a']--;
+    idx++;
+  }
 
-    if (numOfAliceLettersLeft > 0 && 0 == numOfBobLettersLeft) {
-        return WIN;
-    } else if (0 == numOfAliceLettersLeft && numOfBobLettersLeft > 0) {
-        return LOSE;
-    } else {
-        return DRAW;
+  int numOfAliceLettersLeft = 0, numOfBobLettersLeft = 0;
+  for (int itr = 0; itr < 26; itr++) {
+    if (letters[itr] > 0) {
+      numOfAliceLettersLeft++;
+    } else if (letters[itr] < 0) {
+      numOfBobLettersLeft++;
     }
+  }
 
+  if (numOfAliceLettersLeft > 0 && 0 == numOfBobLettersLeft) {
+    return WIN;
+  } else if (0 == numOfAliceLettersLeft && numOfBobLettersLeft > 0) {
+    return LOSE;
+  } else {
+    return DRAW;
+  }
 }
 
+int main() {
+  int numOfGames = 3;
+  char sentences[10][100001] = {
+      "i will win",        "will i",
+      "today or tomorrow", "today or tomorrow and yesterday",
+      "i dare you",        "bad day"};
 
+  for (int itr = 0; itr < numOfGames * 2; itr = itr + 2) {
+    int res = getAliceStatus(sentences[itr], sentences[itr + 1]);
+    switch (res) {
+      case WIN:
+        printf("You win some.\n");
+        break;
+      case LOSE:
+        printf("You lose some.\n");
+        break;
+      case DRAW:
+        printf("You draw some.\n");
+        break;
+    }
+  }
+
+  return 0;
+}
