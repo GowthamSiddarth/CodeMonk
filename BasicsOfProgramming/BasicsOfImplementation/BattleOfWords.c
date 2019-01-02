@@ -39,3 +39,40 @@ Original Constraints : ( 70 pts )
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/battle-of-words/
 */
+#define WIN 1
+#define LOSE -1
+#define DRAW 0
+
+int getAliceStatus(char *aliceSentence, char *bobSentence) {
+    int letters[26] = {0};
+    
+    int idx = 0;
+    while ('\0' != aliceSentence[idx]) {
+        letters[aliceSentence[idx] - 'a']++;
+    }
+
+    idx = 0;
+    while ('\0' != bobSentence[idx]) {
+        letters[bobSentence[idx] - 'a']--;
+    }
+
+    int numOfAliceLettersLeft = 0, numOfBobLettersLeft = 0;
+    for (int itr = 0; itr < 26; itr++) {
+        if (letters[itr] > 0) {
+            numOfAliceLettersLeft++;
+        } else if (letters[itr] < 0) {
+            numOfBobLettersLeft++;
+        }
+    }
+
+    if (numOfAliceLettersLeft > 0 && 0 == numOfBobLettersLeft) {
+        return WIN;
+    } else if (0 == numOfAliceLettersLeft && numOfBobLettersLeft > 0) {
+        return LOSE;
+    } else {
+        return DRAW;
+    }
+
+}
+
+
