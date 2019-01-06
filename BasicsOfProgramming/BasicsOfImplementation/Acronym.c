@@ -52,4 +52,17 @@ Constraints:
 1<= length of each word <=100
 
 1<= length of the sentence <=100
+
+https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/acronym-2/
 */
+#include <string.h>
+
+int indexOf(char **arrOfStrings, int numOfItems, char *key) {
+    for (int idx = 0; idx < numOfItems; idx++) {
+        if (0 == strcmp(arrOfStrings[idx], key)) {
+            return idx;
+        }
+    }
+
+    return -1;
+}
