@@ -66,3 +66,20 @@ int indexOf(char **arrOfStrings, int numOfItems, char *key) {
 
     return -1;
 }
+
+int getNumOfWhitespaces(char *sentence) {
+    int idx = 0, whiteSpaceCount = 0;
+
+    while ('\0' != sentence[idx]) {
+        while ('\0' != sentence[idx] && ' ' != sentence[idx]) {
+            idx++;
+        }
+
+        whiteSpaceCount = whiteSpaceCount + (' ' == sentence[idx]);
+        while ('\0' != sentence[idx] && ' ' == sentence[idx]) {
+            idx++;
+        }
+    }
+
+    return whiteSpaceCount;
+}
