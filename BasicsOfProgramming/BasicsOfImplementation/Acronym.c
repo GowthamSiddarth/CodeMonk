@@ -61,6 +61,12 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 
 #define MAX_LEN_WORD 100
 
+struct DISLIKED_WORDS {
+    char **words;
+    int numOfWords;
+    int *dislikedWordsFlag;
+};
+
 int indexOf(char **arrOfStrings, int numOfItems, char *key) {
     for (int idx = 0; idx < numOfItems; idx++) {
         if (0 == strcmp(arrOfStrings[idx], key)) {
@@ -166,16 +172,21 @@ char * concat(char *s1, char *s2) {
     return s;
 }
 
-char * getAcronymWithoutDislikedWords(char **dislikedWords, int numOfDislikedWords, char *sentence) {
+struct DISLIKED_WORDS getDislikedWordsFromSentence(char **dislikedWords, int numOfDislikedWords, char *sentence) {
     int numOfWords = 0;
     char **words = split(sentence, &numOfWords);
 
-    char *res = "";
+    int *dislikedWordsFlag = (int *)calloc(numOfWords, sizeof(int));
     for (int itr = 0; itr < numOfWords; itr++) {
         if (indexOf(dislikedWords, numOfDislikedWords, words[itr]) >= 0) {
-            res = concat(res, toUpper(words[itr][0]));
+            dislikedWordsFlag[itr] = 1;
         }
     }
 
-    return res;
+    struct DISLIKED_WORDS dislikedWordsWithIdx;
+    dislikedWordsWithIdx.words = words;
+    dislikedWordsWithIdx.numOfWords = numOfWords;
+    dislikedWordsWithIdx.dislikedWordsFlag = dislikedWordsFlag;
+
+    return dislikedWordsWithIdx;
 }
