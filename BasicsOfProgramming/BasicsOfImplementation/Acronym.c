@@ -140,3 +140,7 @@ char ** split(char *sentence, int *numOfWords) {
 
     return words;
 }
+
+char toUpper(char c) {
+    return c - 'a' + 'A';
+}
