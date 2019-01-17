@@ -67,6 +67,28 @@ int indexOf(char **arrOfStrings, int numOfItems, char *key) {
     return -1;
 }
 
+void trim(char *string) {
+    while ('\0' != *string && ' ' == *string) {
+        string++;
+    }
+
+    int lastNonWhitespaceCharIdx = 0, idx = 0;
+    while ('\0' != string[idx]) {
+        while ('\0' != string[idx] && ' ' != string[idx]) {
+            idx++;
+        }
+
+        lastNonWhitespaceCharIdx = idx - 1;
+        while ('\0' != string[idx] && ' ' == string[idx]) {
+            idx++;
+        }
+    }
+
+    if ('\0' != string[lastNonWhitespaceCharIdx + 1]) {
+        string[lastNonWhitespaceCharIdx + 1] = '\0';
+    }
+}
+
 int getNumOfWhitespaces(char *sentence) {
     int idx = 0, whiteSpaceCount = 0;
 
