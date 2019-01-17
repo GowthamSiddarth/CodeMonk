@@ -56,6 +56,9 @@ Constraints:
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/acronym-2/
 */
 #include <string.h>
+#include <malloc.h>
+
+#define MAX_LEN_WORD 100
 
 int indexOf(char **arrOfStrings, int numOfItems, char *key) {
     for (int idx = 0; idx < numOfItems; idx++) {
@@ -104,4 +107,34 @@ int getNumOfWhitespaces(char *sentence) {
     }
 
     return whiteSpaceCount;
+}
+
+char ** split(char *sentence) {
+    trim(sentence);
+    int numOfWhitespaces = getNumOfWhitespaces(sentence);
+
+    char **words = (char **)malloc(sizeof(char *) * (numOfWhitespaces + 1));
+    for (int itr = 0; itr < numOfWhitespaces; itr++) {
+        words[itr] = (char *)calloc(MAX_LEN_WORD + 1, sizeof(char));
+    }   
+
+    int currWordIdx = 0, currCharInSentenceIdx = 0;
+    while ('\0' != sentence[currCharInSentenceIdx]) {
+        int currCharInWordIdx = 0;
+        while ('\0' != sentence[currCharInSentenceIdx] && ' ' != sentence[currCharInSentenceIdx]) {
+            words[currWordIdx][currCharInWordIdx] = sentence[currCharInSentenceIdx];
+            currCharInSentenceIdx++;
+            currCharInWordIdx++;
+        }
+
+        words[currWordIdx][currCharInWordIdx] = '\0';
+
+        while ('\0' != sentence[currCharInSentenceIdx] && ' ' == sentence[currCharInSentenceIdx]) {
+            currCharInSentenceIdx++;
+        }
+
+        currWordIdx++;
+    } 
+
+    return words;
 }
