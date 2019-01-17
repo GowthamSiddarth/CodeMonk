@@ -57,6 +57,7 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 #include <string.h>
 #include <malloc.h>
+#include <stdio.h>
 
 #define MAX_LEN_WORD 100
 
@@ -70,7 +71,7 @@ int indexOf(char **arrOfStrings, int numOfItems, char *key) {
     return -1;
 }
 
-void trim(char *string) {
+char * trim(char *string) {
     while ('\0' != *string && ' ' == *string) {
         string++;
     }
@@ -90,6 +91,8 @@ void trim(char *string) {
     if ('\0' != string[lastNonWhitespaceCharIdx + 1]) {
         string[lastNonWhitespaceCharIdx + 1] = '\0';
     }
+
+    return string;
 }
 
 int getNumOfWhitespaces(char *sentence) {
@@ -109,12 +112,13 @@ int getNumOfWhitespaces(char *sentence) {
     return whiteSpaceCount;
 }
 
-char ** split(char *sentence) {
-    trim(sentence);
+char ** split(char *sentence, int *numOfWords) {
+    sentence = trim(sentence);
     int numOfWhitespaces = getNumOfWhitespaces(sentence);
+    *numOfWords = numOfWhitespaces + 1;
 
-    char **words = (char **)malloc(sizeof(char *) * (numOfWhitespaces + 1));
-    for (int itr = 0; itr < numOfWhitespaces; itr++) {
+    char **words = (char **)malloc(sizeof(char *) * (*numOfWords));
+    for (int itr = 0; itr < (*numOfWords); itr++) {
         words[itr] = (char *)calloc(MAX_LEN_WORD + 1, sizeof(char));
     }   
 
@@ -126,8 +130,6 @@ char ** split(char *sentence) {
             currCharInSentenceIdx++;
             currCharInWordIdx++;
         }
-
-        words[currWordIdx][currCharInWordIdx] = '\0';
 
         while ('\0' != sentence[currCharInSentenceIdx] && ' ' == sentence[currCharInSentenceIdx]) {
             currCharInSentenceIdx++;
