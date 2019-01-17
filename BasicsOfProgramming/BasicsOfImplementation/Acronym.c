@@ -151,27 +151,6 @@ char toUpper(char c) {
     return c - 'a' + 'A';
 }
 
-char * concat(char *s1, char *s2) {
-    int length = strlen(s1) + strlen(s2);
-    char *s = (char *)calloc(length + 1, sizeof(char));
-
-    int concatStrIdx = 0, currStrIdx = 0;
-    while ('\0' != s1[currStrIdx]) {
-        s[concatStrIdx] = s1[currStrIdx];
-        currStrIdx++;
-        concatStrIdx++;
-    }
-
-    currStrIdx = 0;
-    while ('\0' != s2[currStrIdx]) {
-        s[concatStrIdx] = s2[currStrIdx];
-        currStrIdx++;
-        concatStrIdx++;
-    }
-
-    return s;
-}
-
 struct DISLIKED_WORDS getDislikedWordsFromSentence(char **dislikedWords, int numOfDislikedWords, char *sentence) {
     int numOfWords = 0;
     char **words = split(sentence, &numOfWords);
