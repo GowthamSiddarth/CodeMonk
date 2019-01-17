@@ -190,3 +190,24 @@ struct DISLIKED_WORDS getDislikedWordsFromSentence(char **dislikedWords, int num
 
     return dislikedWordsWithIdx;
 }
+
+int main() {
+    char sentence[101];
+    memcpy(sentence, "hey all boys and girls welcome to hackerearth easy september challenge", 71);
+
+    char *dislikedWords[101] = {"hey", "girls", "i", "am", "single"};
+    int numOfDislikedWords = 5;
+
+    struct DISLIKED_WORDS dislikedWordsWithIdx = getDislikedWordsFromSentence(dislikedWords, numOfDislikedWords, sentence);
+    for (int itr = 0; itr < dislikedWordsWithIdx.numOfWords; itr++) {
+        if (0 == dislikedWordsWithIdx.dislikedWordsFlag[itr]) { 
+            printf("%c", toUpper(dislikedWordsWithIdx.words[itr][0]));
+
+            if (itr < dislikedWordsWithIdx.numOfWords - 1) {
+                printf(".");
+            }
+        }        
+    }
+
+    return 0;
+}
