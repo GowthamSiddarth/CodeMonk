@@ -165,3 +165,17 @@ char * concat(char *s1, char *s2) {
 
     return s;
 }
+
+char * getAcronymWithoutDislikedWords(char **dislikedWords, int numOfDislikedWords, char *sentence) {
+    int numOfWords = 0;
+    char **words = split(sentence, &numOfWords);
+
+    char *res = "";
+    for (int itr = 0; itr < numOfWords; itr++) {
+        if (indexOf(dislikedWords, numOfDislikedWords, words[itr]) >= 0) {
+            res = concat(res, toUpper(words[itr][0]));
+        }
+    }
+
+    return res;
+}
