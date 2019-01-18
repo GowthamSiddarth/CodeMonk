@@ -24,3 +24,34 @@ Names contain only lowercase English alphabets
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/car-names-4/
 */
+#define OK 1
+#define NOT_OK 0
+
+int hasSeqOccrWithEqualFreqDist(char *carName) {
+    int firstCharCount = 0, secondCharCount = 0, thirdCharCount = 0;
+    char firstChar = carName[0];
+
+    int idx = 0;
+    while ('\0' != carName[idx] && firstChar == carName[idx]) {
+        idx++;
+        firstCharCount++;
+    }
+
+    char secondChar = carName[idx];
+    while ('\0' != carName[idx] && secondChar == carName[idx]) {
+        idx++;
+        secondCharCount++;
+    }
+
+    if (secondCharCount != firstCharCount) {
+        return NOT_OK;
+    }
+
+    char thirdChar = carName[idx];
+    while ('\0' != carName[idx] && thirdChar == carName[idx]) {
+        idx++;
+        thirdCharCount++;
+    }
+
+    return thirdCharCount == secondCharCount ? OK : NOT_OK;
+}
