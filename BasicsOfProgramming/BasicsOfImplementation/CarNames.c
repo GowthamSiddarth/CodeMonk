@@ -57,3 +57,19 @@ int hasSeqOccrWithEqualFreqDist(char *carName) {
 
   return '\0' == carName[idx] && thirdCharCount == secondCharCount ? OK : NOT_OK;
 }
+
+int main() {
+  char *carName = "brian";
+  int res = hasSeqOccrWithEqualFreqDist(carName);
+
+  switch (res) {
+    case OK:
+      printf("OK");
+      break;
+    case NOT_OK:
+      printf("Not OK");
+      break;
+  }
+
+  return 0;
+}
