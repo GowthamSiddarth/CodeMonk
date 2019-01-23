@@ -49,8 +49,8 @@ Constraints:
 int hasEqualNumOfCherriesFor2Days(char chocolate[ROWS][COLS], int dim) {
     int *cumulativeRowSum = (int *)malloc(sizeof(int) * dim);
 
+    int currRowSum = 0;
     for (int itr1 = 0; itr1 < dim; itr1++) {
-        int currRowSum = 0;
         for (int itr2 = 0; itr2 < dim; itr2++) {
             if ('#' == chocolate[itr1][itr2]) {
                 currRowSum++;
@@ -62,8 +62,8 @@ int hasEqualNumOfCherriesFor2Days(char chocolate[ROWS][COLS], int dim) {
 
     int *cumulativeColSum = (int *)malloc(sizeof(int) * dim);
 
+    int currColSum = 0;
     for (int itr1 = 0; itr1 < dim; itr1++) {
-        int currColSum = 0;
         for (int itr2 = 0; itr2 < dim; itr2++) {
             if ('#' == chocolate[itr2][itr1]) {
                 currColSum++;
