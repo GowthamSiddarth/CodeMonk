@@ -37,3 +37,45 @@ Constraints:
 1 <= T <= 10
 2 <= N <= 1000
 */
+#define YES 1
+#define NO 0
+
+#include <malloc.h>
+
+int hasEqualNumOfCherriesFor2Days(char **chocolate, int dim) {
+    int *cumulativeRowSum = (int *)malloc(sizeof(int) * dim);
+
+    for (int itr1 = 0; itr1 < dim; itr1++) {
+        int currRowSum = 0;
+        for (int itr2 = 0; itr2 < dim; itr2++) {
+            if ('#' == chocolate[itr1][itr2]) {
+                currRowSum++;
+            }
+        }
+
+        cumulativeRowSum[itr1] = currRowSum;
+    }
+
+    int *cumulativeColSum = (int *)malloc(sizeof(int) * dim);
+
+    for (int itr1 = 0; itr1 < dim; itr1++) {
+        int currColSum = 0;
+        for (int itr2 = 0; itr2 < dim; itr2++) {
+            if ('#' == chocolate[itr2][itr1]) {
+                currColSum++;
+            }
+        }
+
+        cumulativeRowSum[itr1] = currColSum;
+    }
+
+    int totalCherries = cumulativeRowSum[dim - 1];
+
+    for (int itr = 0; itr < dim; itr++) {
+        if (totalCherries / 2 == cumulativeRowSum[itr] || totalCherries / 2 == cumulativeColSum[itr]) {
+            return YES;
+        }
+    }
+
+    return NO;
+}
