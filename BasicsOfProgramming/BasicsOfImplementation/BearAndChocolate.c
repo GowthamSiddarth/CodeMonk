@@ -39,10 +39,14 @@ Constraints:
 */
 #define YES 1
 #define NO 0
+#define ROWS 1000
+#define COLS 1000
 
+#include <stdio.h>
+#include <string.h>
 #include <malloc.h>
 
-int hasEqualNumOfCherriesFor2Days(char **chocolate, int dim) {
+int hasEqualNumOfCherriesFor2Days(char chocolate[ROWS][COLS], int dim) {
     int *cumulativeRowSum = (int *)malloc(sizeof(int) * dim);
 
     for (int itr1 = 0; itr1 < dim; itr1++) {
@@ -66,7 +70,7 @@ int hasEqualNumOfCherriesFor2Days(char **chocolate, int dim) {
             }
         }
 
-        cumulativeRowSum[itr1] = currColSum;
+        cumulativeColSum[itr1] = currColSum;
     }
 
     int totalCherries = cumulativeRowSum[dim - 1];
@@ -77,5 +81,7 @@ int hasEqualNumOfCherriesFor2Days(char **chocolate, int dim) {
         }
     }
 
+    free(cumulativeRowSum);
+    free(cumulativeColSum);
     return NO;
 }
