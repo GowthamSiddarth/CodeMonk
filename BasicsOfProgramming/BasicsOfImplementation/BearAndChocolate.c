@@ -42,66 +42,67 @@ Constraints:
 #define ROWS 1000
 #define COLS 1000
 
+#include <malloc.h>
 #include <stdio.h>
 #include <string.h>
-#include <malloc.h>
 
 int hasEqualNumOfCherriesFor2Days(char chocolate[ROWS][COLS], int dim) {
-    int *cumulativeRowSum = (int *)malloc(sizeof(int) * dim);
+  int *cumulativeRowSum = (int *)malloc(sizeof(int) * dim);
 
-    int currRowSum = 0;
-    for (int itr1 = 0; itr1 < dim; itr1++) {
-        for (int itr2 = 0; itr2 < dim; itr2++) {
-            if ('#' == chocolate[itr1][itr2]) {
-                currRowSum++;
-            }
-        }
-
-        cumulativeRowSum[itr1] = currRowSum;
+  int currRowSum = 0;
+  for (int itr1 = 0; itr1 < dim; itr1++) {
+    for (int itr2 = 0; itr2 < dim; itr2++) {
+      if ('#' == chocolate[itr1][itr2]) {
+        currRowSum++;
+      }
     }
 
-    int *cumulativeColSum = (int *)malloc(sizeof(int) * dim);
+    cumulativeRowSum[itr1] = currRowSum;
+  }
 
-    int currColSum = 0;
-    for (int itr1 = 0; itr1 < dim; itr1++) {
-        for (int itr2 = 0; itr2 < dim; itr2++) {
-            if ('#' == chocolate[itr2][itr1]) {
-                currColSum++;
-            }
-        }
+  int *cumulativeColSum = (int *)malloc(sizeof(int) * dim);
 
-        cumulativeColSum[itr1] = currColSum;
+  int currColSum = 0;
+  for (int itr1 = 0; itr1 < dim; itr1++) {
+    for (int itr2 = 0; itr2 < dim; itr2++) {
+      if ('#' == chocolate[itr2][itr1]) {
+        currColSum++;
+      }
     }
 
-    int totalCherries = cumulativeRowSum[dim - 1];
+    cumulativeColSum[itr1] = currColSum;
+  }
 
-    for (int itr = 0; itr < dim; itr++) {
-        if (totalCherries / 2 == cumulativeRowSum[itr] || totalCherries / 2 == cumulativeColSum[itr]) {
-            return YES;
-        }
+  int totalCherries = cumulativeRowSum[dim - 1];
+
+  for (int itr = 0; itr < dim; itr++) {
+    if (totalCherries / 2 == cumulativeRowSum[itr] ||
+        totalCherries / 2 == cumulativeColSum[itr]) {
+      return YES;
     }
+  }
 
-    free(cumulativeRowSum);
-    free(cumulativeColSum);
-    return NO;
+  free(cumulativeRowSum);
+  free(cumulativeColSum);
+  return NO;
 }
 
 int main() {
-    char chocolate[1000][1000];
-    memcpy(chocolate[0], "####", 4);
-    memcpy(chocolate[1], ".##.", 4);
-    memcpy(chocolate[2], ".#..", 4);
-    memcpy(chocolate[3], "#...", 4);
+  char chocolate[1000][1000];
+  memcpy(chocolate[0], "####", 4);
+  memcpy(chocolate[1], ".##.", 4);
+  memcpy(chocolate[2], ".#..", 4);
+  memcpy(chocolate[3], "#...", 4);
 
-    int res = hasEqualNumOfCherriesFor2Days(chocolate, 4);
-    switch (res) {
-        case YES:
-            printf("YES");
-            break;
-        case NO:
-            printf("NO");
-            break;
-    }
+  int res = hasEqualNumOfCherriesFor2Days(chocolate, 4);
+  switch (res) {
+    case YES:
+      printf("YES");
+      break;
+    case NO:
+      printf("NO");
+      break;
+  }
 
-    return 0;
+  return 0;
 }
