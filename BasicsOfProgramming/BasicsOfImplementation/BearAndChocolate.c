@@ -85,3 +85,23 @@ int hasEqualNumOfCherriesFor2Days(char chocolate[ROWS][COLS], int dim) {
     free(cumulativeColSum);
     return NO;
 }
+
+int main() {
+    char chocolate[1000][1000];
+    memcpy(chocolate[0], "####", 4);
+    memcpy(chocolate[1], ".##.", 4);
+    memcpy(chocolate[2], ".#..", 4);
+    memcpy(chocolate[3], "#...", 4);
+
+    int res = hasEqualNumOfCherriesFor2Days(chocolate, 4);
+    switch (res) {
+        case YES:
+            printf("YES");
+            break;
+        case NO:
+            printf("NO");
+            break;
+    }
+
+    return 0;
+}
