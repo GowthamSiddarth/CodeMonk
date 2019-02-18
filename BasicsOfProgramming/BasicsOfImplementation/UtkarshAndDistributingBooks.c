@@ -41,6 +41,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/utkarsh-and-distributing-books-february-easy/description/
 */
+#include <stdio.h>
 
 struct UtkarshSaharshMaxStudents {
     int maxNumOfStudForUtkarsh, maxNumOfStudForSaharsh;
@@ -59,4 +60,14 @@ struct UtkarshSaharshMaxStudents getMaxStudsReqForUtkarshAndSaharsh(int *piles, 
     utkarshSaharshMaxStudents.maxNumOfStudForUtkarsh = minBooksInAPile - 1;
     utkarshSaharshMaxStudents.maxNumOfStudForSaharsh = totalBooks - numOfPiles;
     return utkarshSaharshMaxStudents;
+}
+
+int main() {
+    int numOfPiles = 2;
+    int piles[2] = {5, 5};
+
+    struct UtkarshSaharshMaxStudents utkarshSaharshMaxStudents = getMaxStudsReqForUtkarshAndSaharsh(piles, numOfPiles);
+    printf("%d %d", utkarshSaharshMaxStudents.maxNumOfStudForUtkarsh, utkarshSaharshMaxStudents.maxNumOfStudForSaharsh);
+
+    return 0;
 }
