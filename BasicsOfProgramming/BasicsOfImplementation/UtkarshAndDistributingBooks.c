@@ -41,3 +41,22 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/utkarsh-and-distributing-books-february-easy/description/
 */
+
+struct UtkarshSaharshMaxStudents {
+    int maxNumOfStudForUtkarsh, maxNumOfStudForSaharsh;
+};
+
+struct UtkarshSaharshMaxStudents getMaxStudsReqForUtkarshAndSaharsh(int *piles, int numOfPiles) {
+    int totalBooks = 0, minBooksInAPile = 1001;
+    for (int itr = 0; itr < numOfPiles; itr++) {
+        if (piles[itr] < minBooksInAPile) {
+            minBooksInAPile = piles[itr];
+        }
+        totalBooks = totalBooks + piles[itr];
+    }
+
+    struct UtkarshSaharshMaxStudents utkarshSaharshMaxStudents;
+    utkarshSaharshMaxStudents.maxNumOfStudForUtkarsh = minBooksInAPile - 1;
+    utkarshSaharshMaxStudents.maxNumOfStudForSaharsh = totalBooks - numOfPiles;
+    return utkarshSaharshMaxStudents;
+}
