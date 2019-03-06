@@ -32,6 +32,8 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 #define TRUE 1
 
+#include <stdio.h>
+
 int canPrateekPurchaseGifts(int *costs, int numOfFriends, int targetCost) {
     int currCost = costs[0];
     int start = 0, itr;
@@ -52,4 +54,15 @@ int canPrateekPurchaseGifts(int *costs, int numOfFriends, int targetCost) {
     }
 
     return !TRUE;
+}
+
+int main() {    
+    int targetCost = 12;
+    int costs[] = {1, 3, 4, 5, 2};
+    int numOfFriends = sizeof(costs) / sizeof(costs[0]);
+
+    int res = canPrateekPurchaseGifts(costs, numOfFriends, targetCost);
+    printf("%s", res ? "YES" : "NO");
+
+    return 0;
 }
