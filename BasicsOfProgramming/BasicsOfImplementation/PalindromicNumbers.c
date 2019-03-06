@@ -18,6 +18,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/palindromic-numbers-7/description/
 */
+#include <stdio.h>
 
 int reverse(int num) {
     int reverseNum = 0;
@@ -38,4 +39,14 @@ int getPalindromesInRange(int start, int end) {
     }
 
     return count;
+}
+
+int main() {
+    int start = 0;
+    int end = 10;
+
+    int res = getPalindromesInRange(start, end);
+    printf("%d", res);
+
+    return 0;
 }
