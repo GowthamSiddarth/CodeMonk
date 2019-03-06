@@ -28,6 +28,11 @@ The string will contain only lowercase letters.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/palindromic-ciphers/
 */
+#define TRUE 1
+
+struct PalindromicCipher {
+    int cipher, isPalindrome;
+};
 
 int isPalindrome(char* string) {
     int lastIdx = 0;
@@ -43,4 +48,21 @@ int isPalindrome(char* string) {
     }
 
     return idx >= lastIdx;
+}
+
+struct PalindromicCipher getPalindromicCiphers(char *string) {
+    struct PalindromicCipher palindromicCipher;
+    if (isPalindrome(string)) {
+        palindromicCipher.isPalindrome = TRUE;
+    } else {
+        int prod = 1;
+        int idx = 0;
+        while ('\0' != string[idx]) {
+            prod = prod * (string[idx] - 'a' + 1);
+        }
+
+        palindromicCipher.cipher = prod;
+    }
+
+    return palindromicCipher;
 }
