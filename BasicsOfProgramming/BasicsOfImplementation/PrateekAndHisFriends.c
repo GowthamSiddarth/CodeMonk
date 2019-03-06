@@ -5,7 +5,7 @@ party, instead of giving him one. The cost of the gifts are given in the array
 Value where ith friend asks for a gift which has a cost Costi.
 
 But, Prateek has only X amount of money to spend on gifts and he wants to invite
-his friends which are in continuous range such that sum of the cost of the gifts
+his friends which are in continuous range such that currCost of the cost of the gifts
 of those friends will be exactly equal to X.
 
 If he can invite his friends, who can satisfy the above condition then, print
@@ -30,3 +30,26 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/prateek-and-his-friends/description/
 */
+#define TRUE 1
+
+int canPrateekPurchaseGifts(int *costs, int numOfFriends, int targetCost) {
+    int currCost = costs[0];
+    int start = 0, itr;
+
+    for (itr = 1; itr <= numOfFriends; itr++) {
+        while (currCost > targetCost && start < itr - 1) {
+            currCost = currCost - costs[start];
+            start++;
+        }
+
+        if (currCost == targetCost) {
+            return TRUE;
+        }
+
+        if (itr < numOfFriends) {
+            currCost = currCost + costs[itr];
+        }
+    }
+
+    return !TRUE;
+}
