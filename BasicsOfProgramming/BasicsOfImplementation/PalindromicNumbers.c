@@ -18,3 +18,13 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/palindromic-numbers-7/description/
 */
+
+int reverse(int num) {
+    int reverseNum = 0;
+    while (num) {
+        reverseNum = reverseNum * 10 + num % 10;
+        num = num / 10;
+    }
+
+    return reverseNum;
+}
