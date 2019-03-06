@@ -28,3 +28,19 @@ The string will contain only lowercase letters.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/palindromic-ciphers/
 */
+
+int isPalindrome(char* string) {
+    int lastIdx = 0;
+    while ('\0' != string[lastIdx]) {
+        lastIdx++;
+    }
+
+    lastIdx--;
+    int idx = 0;
+    while (idx < lastIdx && string[idx] == string[lastIdx]) {
+        idx++;
+        lastIdx--;
+    }
+
+    return idx >= lastIdx;
+}
