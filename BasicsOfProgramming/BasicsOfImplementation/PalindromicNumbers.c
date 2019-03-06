@@ -28,3 +28,14 @@ int reverse(int num) {
 
     return reverseNum;
 }
+
+int getPalindromesInRange(int start, int end) {
+    int count = 0;
+    for (int itr = start; itr <= end; itr++) {
+        if (itr == reverse(itr)) {
+            count++;
+        }
+    }
+
+    return count;
+}
