@@ -30,6 +30,8 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 #define TRUE 1
 
+#include <stdio.h>
+
 struct PalindromicCipher {
     int cipher, isPalindrome;
 };
@@ -59,10 +61,24 @@ struct PalindromicCipher getPalindromicCiphers(char *string) {
         int idx = 0;
         while ('\0' != string[idx]) {
             prod = prod * (string[idx] - 'a' + 1);
+            idx++;
         }
 
         palindromicCipher.cipher = prod;
     }
 
     return palindromicCipher;
+}
+
+int main() {
+    char *string = "goodarjit";
+    struct PalindromicCipher result = getPalindromicCiphers(string);
+
+    if (result.isPalindrome) {
+        printf("Palindrome");
+    } else {
+        printf("%d", result.cipher);
+    }
+
+    return 0;
 }
