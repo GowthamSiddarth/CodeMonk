@@ -71,3 +71,11 @@ enum LEDState getLEDState(enum BulbState bulb1, enum BulbState bulb2, enum BulbS
 enum BulbState toggleBulbState(enum BulbState currBulbState) {
     return ON == currBulbState ? OFF : ON;
 }
+
+enum BulbState getBulbStateAt(enum BulbState currBulbState, int now, int bulbFreq) {
+    if (0 == (now % bulbFreq)) {
+        currBulbState = toggleBulbState(currBulbState);
+    }
+
+    return currBulbState;
+}
