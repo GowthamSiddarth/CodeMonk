@@ -79,3 +79,21 @@ enum BulbState getBulbStateAt(enum BulbState currBulbState, int now, int bulbFre
 
     return currBulbState;
 }
+
+int * getNumOfSecsForEachLEDState(int totalSeconds, int redFreq, int greenFreq, int blueFreq, int numOfStates) {
+    int * timeForEachState = (int *)calloc(numOfStates, sizeof(int));
+
+    enum BulbState bulb1State = ON;
+    enum BulbState bulb2State = ON;
+    enum BulbState bulb3State = ON;
+    for (int itr = 0; itr < totalSeconds; itr++) {
+        bulb1State = getBulbStateAt(bulb1State, itr, redFreq);
+        bulb2State = getBulbStateAt(bulb2State, itr, greenFreq);
+        bulb3State = getBulbStateAt(bulb3State, itr, blueFreq);
+
+        enum LEDState ledState = getLEDState(bulb1State, bulb2State, bulb3State);
+        timeForEachState[ledState]++;
+    }
+
+    return timeForEachState;
+}
