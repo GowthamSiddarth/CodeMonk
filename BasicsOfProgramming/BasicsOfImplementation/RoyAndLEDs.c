@@ -97,3 +97,18 @@ int * getNumOfSecsForEachLEDState(int totalSeconds, int redFreq, int greenFreq, 
 
     return timeForEachState;
 }
+
+int main() {
+    int totalSeconds = 12;
+    int redFreq = 2;
+    int greenFreq = 3;
+    int blueFreq = 5;
+
+    int numOfStates = 8;
+    int * timeForEachState = getNumOfSecsForEachLEDState(totalSeconds, redFreq, greenFreq, blueFreq, numOfStates);
+    for (int itr = 0; itr < numOfStates; itr++) {
+        printf("%d ", timeForEachState[itr]);
+    }
+
+    return 0;
+}
