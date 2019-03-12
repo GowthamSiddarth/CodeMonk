@@ -32,7 +32,6 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 #include <malloc.h>
 #include <stdio.h>
-#include <math.h>
 
 enum BulbState {OFF, ON};
 enum LEDState {RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, WHITE, BLACK};
