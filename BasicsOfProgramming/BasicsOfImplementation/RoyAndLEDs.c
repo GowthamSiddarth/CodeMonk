@@ -30,3 +30,17 @@ Constraints: 1 <= T, R, G, B <= 1000000
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/roy-and-leds-6/
 */
+enum BulbState {OFF, ON};
+enum LEDStates {RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, WHITE, BLACK};
+
+enum LEDStates getLEDState(enum BulbState bulb1, enum BulbState bulb2, enum BulbState bulb3) {
+    switch (bulb1 + 2 * bulb2 + 4 * bulb3) {
+        case 0: return BLACK;
+        case 1: return RED;
+        case 2: return GREEN;
+        case 3: return YELLOW;
+        case 4: return BLUE;
+        case 5: return MAGENTA;
+        case 6: return CYAN;
+        case 7: return WHITE;
+    }
