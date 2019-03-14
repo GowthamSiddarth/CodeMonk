@@ -42,3 +42,20 @@ void getCurrRoundPlayers(int * players, int numOfPlayers, int start, int *currPl
         *currPlayer2 = itr;
     }
 }
+
+int getWinner(int **winnerMatrix, int dim, int numOfPlayers) {
+    int *players = (int *)calloc(numOfPlayers, sizeof(int));
+    int numOfPlayersEliminated = 0, start = -2, currWinner;
+
+    while (numOfPlayersEliminated < numOfPlayers - 1) {
+        start = (start + 2) %  numOfPlayers;
+        int currPlayer1, currPlayer2;
+        getCurrRoundPlayers(players, numOfPlayers, start, &currPlayer1, &currPlayer2);
+
+        players[currWinner = winnerMatrix[currPlayer2 - 1][currPlayer1] ? currPlayer2 : currPlayer1] = 1;
+        numOfPlayersEliminated++;
+    }
+    
+    free(players);
+    return currWinner + 1;
+}
