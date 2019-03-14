@@ -27,6 +27,8 @@ Aij = {0, 1} (i > j)
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/chess-tournament-4/description/
 */
 #include <malloc.h>
+#include <stdio.h>
+#include <math.h>
 
 void getCurrRoundPlayers(int * players, int numOfPlayers, int start, int *currPlayer1, int *currPlayer2) {
     *currPlayer1 = 1 == players[start] ? start : (1 == players[start + 1] ? start + 1 : -1);
@@ -58,4 +60,25 @@ int getWinner(int **winnerMatrix, int dim, int numOfPlayers) {
     
     free(players);
     return currWinner + 1;
+}
+
+int main() {
+    int n = 2;
+    int numOfPlayers = pow(2, n);
+
+    int **winnerMatrix = (int **)malloc(sizeof(int) * (numOfPlayers - 1));
+    for (int itr = 0; itr < (numOfPlayers - 1); itr++) {
+        winnerMatrix[itr] = (int *)malloc(sizeof(int) * (numOfPlayers - 1));
+    }
+
+    winnerMatrix[0][0] = 0;
+    winnerMatrix[1][0] = 1;
+    winnerMatrix[1][1] = 0;
+    winnerMatrix[2][0] = 1;
+    winnerMatrix[2][1] = 1;
+    winnerMatrix[2][2] = 1;
+
+    int winner = getWinner(winnerMatrix, 3, numOfPlayers);
+
+    return 0;
 }
