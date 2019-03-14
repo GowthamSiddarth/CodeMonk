@@ -26,3 +26,19 @@ Aij = {0, 1} (i > j)
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/chess-tournament-4/description/
 */
+#include <malloc.h>
+
+void getCurrRoundPlayers(int * players, int numOfPlayers, int start, int *currPlayer1, int *currPlayer2) {
+    *currPlayer1 = 1 == players[start] ? start : (1 == players[start + 1] ? start + 1 : -1);
+    if (-1 == *currPlayer1) {
+        *currPlayer1 = start;
+        *currPlayer2 = start + 1;
+    } else {
+        int itr = start + 2;
+        while (itr < numOfPlayers && 0 == players[itr]) {
+            itr++;
+        }
+
+        *currPlayer2 = itr;
+    }
+}
