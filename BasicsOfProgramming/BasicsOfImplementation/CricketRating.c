@@ -27,6 +27,7 @@ Constraint
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/cricket-rating-30/
 */
+#include <stdio.h>
 
 int getHighestConsistentCricketRating(int *ratings, int len) {
     int max = 0, itr, sum = 0;
@@ -44,4 +45,14 @@ int getHighestConsistentCricketRating(int *ratings, int len) {
     }
 
     return max;
+}
+
+int main() {
+    int n = 8;
+    int ratings[8] = {-1, -4, 4, -2, 0, 1, 4, -5};
+
+    int res = getHighestConsistentCricketRating(ratings, n);
+    printf("%d\n", res);
+
+    return 0;
 }
