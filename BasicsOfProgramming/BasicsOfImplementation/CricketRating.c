@@ -27,3 +27,21 @@ Constraint
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/cricket-rating-30/
 */
+
+int getHighestConsistentCricketRating(int *ratings, int len) {
+    int max = 0, itr, sum = 0;
+    for (itr = 0; itr < len; itr++) {
+        int temp = ratings[itr];
+        sum = sum + temp;
+
+        if (sum < 0) {
+            sum = 0;
+        }
+
+        if (sum > max) {
+            max = sum;
+        }
+    }
+
+    return max;
+}
