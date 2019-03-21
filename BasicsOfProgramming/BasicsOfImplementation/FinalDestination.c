@@ -21,6 +21,10 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/final-destination-cakewalk/
 */
+#define MAX_LEN 100000
+
+#include <stdio.h>
+#include <string.h>
 
 struct Position {
     int x, y;
@@ -52,4 +56,14 @@ struct Position getFinalDestination(char * steps) {
     }
 
     return finalDestination;
+}
+
+int main() {
+    char steps[MAX_LEN];
+    memcpy(steps, "LLRDDR", 7);
+
+    struct Position finalDestination = getFinalDestination(steps);
+    printf("%d %d\n", finalDestination.x, finalDestination.y);
+
+    return 0;
 }
