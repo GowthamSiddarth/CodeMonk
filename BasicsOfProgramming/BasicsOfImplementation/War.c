@@ -40,6 +40,9 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/warcakewalk/
 */
+#include <stdio.h>
+
+enum Player {Bob, Alice, None};
 
 int maxInArray(int *arr, int len) {
     int max = -1, idx;
@@ -50,4 +53,11 @@ int maxInArray(int *arr, int len) {
     }
 
     return max;
+}
+
+enum Player getWinner(int *bobArmyStrengths, int *aliceArmyStrengths, int sizeOfEachArmy) {
+    int strongestInBobArmy = maxInArray(bobArmyStrengths, sizeOfEachArmy);
+    int strongestInAliceArmy = maxInArray(aliceArmyStrengths, sizeOfEachArmy);
+
+    return strongestInBobArmy > strongestInAliceArmy ? Bob : (strongestInBobArmy < strongestInAliceArmy ? Alice : None);
 }
