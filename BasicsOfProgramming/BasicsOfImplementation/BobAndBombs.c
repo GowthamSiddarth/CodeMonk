@@ -21,6 +21,10 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/bob-and-bombs-cake-walk/
 */
+#define MAX_LEN 100000
+
+#include <stdio.h>
+#include <string.h>
 
 int getNumOfWallsDestroyed(char *axis) {
     int count = 0, idx = 0;
@@ -48,4 +52,14 @@ int getNumOfWallsDestroyed(char *axis) {
     }
 
     return count;
+}
+
+int main() {
+    char axis[MAX_LEN];        
+    memcpy(axis, "WBW", 4);
+
+    int res = getNumOfWallsDestroyed(axis);
+
+    printf("%d\n", res);
+    return 0;
 }
