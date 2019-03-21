@@ -21,3 +21,31 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/bob-and-bombs-cake-walk/
 */
+
+int getNumOfWallsDestroyed(char *axis) {
+    int count = 0, idx = 0;
+    while ('\0' != axis[idx]) {        
+        if ('B' == axis[idx]) {
+            if (idx >= 1 && 'W' == axis[idx - 1]) {                
+                count++;
+                axis[idx - 1] = ' ';
+            }
+            if (idx >= 2 && 'W' == axis[idx - 2]) {                
+                count++;
+                axis[idx - 2] = ' ';
+            }
+            if ('\0' != axis[idx + 1] && 'W' == axis[idx + 1]) {                
+                count++;
+                axis[idx + 1] = ' ';
+            }
+            if ('\0' != axis[idx + 2] && 'W' == axis[idx + 2]) {                
+                count++;
+                axis[idx + 2] = ' ';
+            }
+        }
+
+        idx++;
+    }
+
+    return count;
+}
