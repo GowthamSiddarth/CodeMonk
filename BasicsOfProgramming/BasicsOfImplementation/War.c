@@ -61,3 +61,24 @@ enum Player getWinner(int *bobArmyStrengths, int *aliceArmyStrengths, int sizeOf
 
     return strongestInBobArmy > strongestInAliceArmy ? Bob : (strongestInBobArmy < strongestInAliceArmy ? Alice : None);
 }
+
+int main() {
+    int bobArmy[] = {15, 20, 50};
+    int aliceArmy[] = {8, 3, 7};
+    int sizeOfEachArmy = sizeof(bobArmy) / sizeof(bobArmy[0]);
+
+    enum Player winner = getWinner(bobArmy, aliceArmy, sizeOfEachArmy);
+    switch (winner) {
+        case Bob:
+            printf("Bob\n");
+            break;
+        case Alice:
+            printf("Alice\n");
+            break;
+        case None:
+            printf("Tie\n");
+            break;
+    }
+
+    return 0;
+}
