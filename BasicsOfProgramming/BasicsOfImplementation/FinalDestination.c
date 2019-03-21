@@ -25,3 +25,31 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 struct Position {
     int x, y;
 };
+
+struct Position getFinalDestination(char * steps) {
+    struct Position finalDestination;
+    finalDestination.x = 0;
+    finalDestination.y = 0;
+
+    int idx = 0;
+    while ('\0' != steps[idx]) {
+        switch (steps[idx]) {
+            case 'L':
+                finalDestination.x = finalDestination.x - 1;
+                break;
+            case 'R':
+                finalDestination.x = finalDestination.x + 1;
+                break;
+            case 'U':
+                finalDestination.y = finalDestination.y + 1;
+                break;
+            case 'D':
+                finalDestination.y = finalDestination.y - 1;
+                break;
+        }
+
+        idx++;
+    }
+
+    return finalDestination;
+}
