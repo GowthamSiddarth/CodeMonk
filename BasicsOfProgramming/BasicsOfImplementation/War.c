@@ -40,3 +40,14 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/warcakewalk/
 */
+
+int maxInArray(int *arr, int len) {
+    int max = -1, idx;
+    for (idx = 0; idx < len; idx++) {
+        if (arr[idx] > max) {
+            max = arr[idx];
+        }
+    }
+
+    return max;
+}
