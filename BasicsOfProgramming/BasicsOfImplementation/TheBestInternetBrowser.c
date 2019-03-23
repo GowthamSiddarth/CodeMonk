@@ -37,7 +37,12 @@ Every string will start from *www. and end with *.com, so well!**
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-best-internet-browser-3/
 */
+enum Boolean {FALSE, TRUE};
 
 struct CharsInBrowserRatio {
     int charsReqInBestBrowser, charsReqInOtherBrowsers;
 };
+
+enum Boolean isVowel(char c) {
+    return 'a' == c || 'e' == c || 'i' == c || 'o' == c || 'u' == c;
+}
