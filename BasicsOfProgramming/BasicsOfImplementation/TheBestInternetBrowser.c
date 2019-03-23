@@ -37,3 +37,7 @@ Every string will start from *www. and end with *.com, so well!**
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-best-internet-browser-3/
 */
+
+struct CharsInBrowserRatio {
+    int charsReqInBestBrowser, charsReqInOtherBrowsers;
+};
