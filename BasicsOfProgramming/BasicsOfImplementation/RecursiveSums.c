@@ -30,6 +30,8 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/recursive-sums/
 */
+#include <malloc.h>
+#include <stdio.h>
 
 struct Digit {
     int freq, digit;
@@ -53,5 +55,22 @@ int getDigitByRecursiveSums(int numOfDistinctDigits, struct Digit * digits) {
         itr++;
     }
 
-    return sum;
+    return getSumOfDigitsOfNum(sum);
+}
+
+int main() {
+    int numOfDistinctDigits = 3;
+    struct Digit *digitsArr = (struct Digit *)malloc(sizeof(struct Digit) * numOfDistinctDigits);
+    int freqs[] = {2, 1, 2};
+    int digits[] = {1, 2, 9};
+
+    for (int itr = 0; itr < numOfDistinctDigits; itr++) {
+        digitsArr[itr].digit = digits[itr];
+        digitsArr[itr].freq = freqs[itr];
+    }
+
+    int res = getDigitByRecursiveSums(numOfDistinctDigits, digitsArr);
+    printf("%d\n", res);
+
+    return 0;
 }
