@@ -34,3 +34,13 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 struct Digit {
     int freq, digit;
 };
+
+unsigned long long int getSumOfDigitsOfNum(unsigned long long int number) {
+    unsigned long long int sum = 0;
+    while (number) {
+        sum = sum + (number % 10);
+        number = number / 10;
+    }
+
+    return sum;
+}
