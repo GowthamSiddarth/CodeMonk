@@ -37,6 +37,11 @@ Every string will start from *www. and end with *.com, so well!**
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-best-internet-browser-3/
 */
+#define MAX_LEN 200
+
+#include <stdio.h>
+#include <string.h>
+
 enum Boolean {FALSE, TRUE};
 
 struct CharsReqInBrowserRatio {
@@ -60,4 +65,14 @@ struct CharsReqInBrowserRatio getCharsReqInBrowser(char *url) {
     ratio.charsReqInOtherBrowsers = dnsLen + 8;
 
     return ratio;
+}
+
+int main() {
+    char url[MAX_LEN + 1];
+    memcpy(url, "www.hackerearth.com", 20);
+
+    struct CharsReqInBrowserRatio ratio = getCharsReqInBrowser(url);
+    printf("%d/%d\n", ratio.charsReqInBestBrowser, ratio.charsReqInOtherBrowsers);
+
+    return 0;
 }
