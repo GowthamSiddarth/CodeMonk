@@ -44,3 +44,14 @@ unsigned long long int getSumOfDigitsOfNum(unsigned long long int number) {
 
     return sum;
 }
+
+int getDigitByRecursiveSums(int numOfDistinctDigits, struct Digit * digits) {
+    int itr = 0;
+    unsigned long long int sum = 0;
+    while (itr < numOfDistinctDigits) {
+        sum = sum + getSumOfDigitsOfNum(digits[itr].freq * digits[itr].digit);
+        itr++;
+    }
+
+    return sum;
+}
