@@ -39,10 +39,25 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 enum Boolean {FALSE, TRUE};
 
-struct CharsInBrowserRatio {
+struct CharsReqInBrowserRatio {
     int charsReqInBestBrowser, charsReqInOtherBrowsers;
 };
 
 enum Boolean isVowel(char c) {
     return 'a' == c || 'e' == c || 'i' == c || 'o' == c || 'u' == c;
+}
+
+struct CharsReqInBrowserRatio getCharsReqInBrowser(char *url) {
+    int idx = 4, charsReq = 0, dnsLen = 0;
+    while ('.' != url[idx]) {
+        charsReq = charsReq + !isVowel(url[idx]);
+        dnsLen++;
+        idx++;
+    }
+
+    struct CharsReqInBrowserRatio ratio;
+    ratio.charsReqInBestBrowser = charsReq + 4;
+    ratio.charsReqInOtherBrowsers = dnsLen + 8;
+
+    return ratio;
 }
