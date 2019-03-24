@@ -17,6 +17,15 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 
 enum Boolean {FALSE, TRUE};
 
+struct Month {
+    char name[10];
+    int days;
+};
+
+struct Month months[] = {{"January", 31}, {"February", 28}, {"March", 31}, {"April", 31}, {"May", 31},
+                            {"June", 30}, {"July", 31}, {"August", 31}, {"September", 30}, 
+                            {"October", 31}, {"November", 30}, {"December", 31}};
+
 enum Boolean isLeapYear(int year) {
     return (0 == (year % 4)) || ((0 == (year % 400)) && (0 != (year % 100)));
 }
