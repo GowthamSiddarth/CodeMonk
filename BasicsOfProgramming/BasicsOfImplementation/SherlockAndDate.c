@@ -14,3 +14,9 @@ Given date will be a valid date.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/sherlock-and-date/
 */
+
+enum Boolean {FALSE, TRUE};
+
+enum Boolean isLeapYear(int year) {
+    return (0 == (year % 4)) || ((0 == (year % 400)) && (0 != (year % 100)));
+}
