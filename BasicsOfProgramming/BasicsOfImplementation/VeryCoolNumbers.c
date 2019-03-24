@@ -35,5 +35,13 @@ int count101(int number) {
 }
 
 enum Boolean isVeryCoolNumber(int number, int threshold) {
-    return count101(number) >= threshold;
+    return count101(number) >= threshold ? TRUE : FALSE;
+}
+
+int getNumberOfVeryCoolNumbers(int range, int threshold) {
+    int itr, count = 0;
+    for (itr = 1; itr <= range; itr++) 
+        count = count + isVeryCoolNumber(itr, threshold);
+    
+    return count;
 }
