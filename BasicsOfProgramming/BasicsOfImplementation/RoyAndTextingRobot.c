@@ -177,3 +177,17 @@ positions['8'] = 4;
 buttons['9'] = 9;
 positions['9'] = 5;
 
+int getTimeTakenByRobot(char *text) {
+    int idx = 0, prevButton = 1, count = 0;
+    while ('\0' != text[idx]) {
+        if (prevButton == buttons[text[idx]]) {
+            count++;
+            prevButton = buttons[text[idx]];
+        }
+
+        count = count + positions[text[idx]];
+        idx++;
+    }
+
+    return count;
+}
