@@ -21,6 +21,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/very-cool-numbers/description/
 */
+#include <stdio.h>
 
 enum Boolean {FALSE, TRUE};
 
@@ -44,4 +45,14 @@ int getNumberOfVeryCoolNumbers(int range, int threshold) {
         count = count + isVeryCoolNumber(itr, threshold);
     
     return count;
+}
+
+int main() {
+    int range = 5;
+    int threshold = 1;
+
+    int res = getNumberOfVeryCoolNumbers(range, threshold);
+    printf("%d\n", res);
+
+    return 0;
 }
