@@ -14,6 +14,7 @@ Given date will be a valid date.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/sherlock-and-date/
 */
+#include <string.h>
 
 enum Boolean {FALSE, TRUE};
 
@@ -26,6 +27,37 @@ struct Month months[] = {{"January", 31}, {"February", 28}, {"March", 31}, {"Apr
                             {"June", 30}, {"July", 31}, {"August", 31}, {"September", 30}, 
                             {"October", 31}, {"November", 30}, {"December", 31}};
 
+struct Date {
+    int date;
+    struct Month month;
+    int year;
+};
+
 enum Boolean isLeapYear(int year) {
     return (0 == (year % 4)) || ((0 == (year % 400)) && (0 != (year % 100)));
+}
+
+struct Date getPreviousDate(struct Date date) {
+    struct Date previousDate;
+    if (date.date > 1) {
+        previousDate.date = date.date - 1;
+        previousDate.month = date.month;
+        previousDate.year = date.year;
+    } else if (0 == strcmp(date.month.name, "March")) {
+        previousDate.date = isLeapYear(date.year) ? 29 : 28;
+        previousDate.month = months[1];
+        previousDate.year = date.year;
+    } else if (0 != strcmp(date.month.name, "January")) {
+        int idx = 1;
+        while (idx < 12 && 0 != strcmp(months[idx].name, date.month.name)) idx++;
+        previousDate.date = months[idx - 1].days;
+        previousDate.month = months[idx - 1];
+        previousDate.year = date.year;
+    } else {
+        previousDate.date = 31;
+        previousDate.month = months[11];
+        previousDate.year = date.year - 1;
+    }
+
+    return previousDate;
 }
