@@ -21,3 +21,13 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/very-cool-numbers/description/
 */
+
+int count101(int number) {
+    int count = 0;
+    while (number) {
+        count = count + (5 == (number & 5));
+        number = number >> 1;
+    }
+
+    return count;
+}
