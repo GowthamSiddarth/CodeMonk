@@ -26,12 +26,13 @@ Constraints:
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-psychic-type/
 */
 #include <malloc.h>
+#include <stdio.h>
 
 enum Boolean {FALSE, TRUE};
 
 enum Boolean canReachDestination(int *positions, int numOfPositions, int source, int destination) {
     int currPos = source;
-    enum Boolean *visited = (enum Boolean *)calloc(numOfPositions, sizeof(enum Boolean));
+    enum Boolean *visited = (enum Boolean *)calloc(numOfPositions + 1, sizeof(enum Boolean));
 
     while (TRUE) {
         if (currPos == destination) {
@@ -40,9 +41,21 @@ enum Boolean canReachDestination(int *positions, int numOfPositions, int source,
             return FALSE;
         } else {
             visited[currPos] = TRUE;
-            currPos = positions[currPos];
+            currPos = positions[currPos - 1];
         }
     }
 
     free(visited);
+}
+
+int main() {
+    int numOfPositions = 5;
+    int positions[] = {3, 4, 2, 5, 5};
+    int source = 1;
+    int destination = 5;
+
+    char *canReach = canReachDestination(positions, numOfPositions, source, destination) ? "YES" : "NO";
+    printf("%s\n", canReach);
+
+    return 0;
 }
