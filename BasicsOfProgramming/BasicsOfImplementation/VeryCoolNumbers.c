@@ -22,6 +22,8 @@ Constraints:
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/very-cool-numbers/description/
 */
 
+enum Boolean {FALSE, TRUE};
+
 int count101(int number) {
     int count = 0;
     while (number) {
@@ -30,4 +32,8 @@ int count101(int number) {
     }
 
     return count;
+}
+
+enum Boolean isVeryCoolNumber(int number, int threshold) {
+    return count101(number) >= threshold;
 }
