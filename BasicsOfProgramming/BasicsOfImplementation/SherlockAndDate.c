@@ -15,6 +15,7 @@ Given date will be a valid date.
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/sherlock-and-date/
 */
 #include <string.h>
+#include <stdio.h>
 
 enum Boolean {FALSE, TRUE};
 
@@ -61,3 +62,11 @@ struct Date getPreviousDate(struct Date date) {
 
     return previousDate;
 }
+
+int main() {
+    struct Date date = {1, months[0], 1996};
+    struct Date previousDate = getPreviousDate(date);
+    printf("%d %s %d\n", previousDate.date, previousDate.month.name, previousDate.year);
+
+    return 0;
+}   
