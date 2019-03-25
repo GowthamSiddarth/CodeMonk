@@ -37,3 +37,14 @@ int * getCumulativeSums(int *arr, int len) {
 
     return cumulativeSums;
 }
+
+void updateArray(int *arr, int len, int pos, int value, int *cumulativeSumsArr) {
+    int prevVal = arr[pos];
+    arr[pos] = value;
+
+    int idx = pos;
+    while (idx < len) {
+        cumulativeSumsArr[idx] = cumulativeSumsArr[idx] + prevVal - value;
+        idx++;
+    }
+}
