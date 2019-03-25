@@ -18,6 +18,7 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/
 */
+#include <stdio.h>
 
 long long int arraySum(long long int *array, int len) {
     long long int sum = 0;
@@ -27,4 +28,14 @@ long long int arraySum(long long int *array, int len) {
     }
 
     return sum;
+}
+
+int main() {
+    long long int array[] = {1000000001, 1000000002, 1000000003, 1000000004, 1000000005};
+    int len = sizeof(array) / sizeof(array[0]);
+
+    long long int sum = arraySum(array, len);
+    printf("%lld\n", sum);
+
+    return 0;
 }
