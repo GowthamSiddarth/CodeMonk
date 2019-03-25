@@ -34,3 +34,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/roy-and-cipher-disk/
 */
+
+int getClockwiseDistance(char from, char to) {
+    return to - from - 2 * 'a';
+}
