@@ -24,3 +24,14 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/string-sum/
 */
+
+int getSumOfWeights(char *string) {
+    int idx = 0, sum = 0;
+
+    while ('\0' != string[idx]) {
+        sum = sum + (string[idx] - 'a' + 1);
+        idx++;
+    }
+
+    return sum;
+}
