@@ -30,6 +30,10 @@ characters.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/psychic-powers/
 */
+#define MAX_LEN 101
+
+#include <stdio.h>
+#include <string.h>
 
 enum Boolean {FALSE, TRUE};
 
@@ -38,10 +42,21 @@ enum Boolean hasNConsecutive0sOr1s(char *string, int n) {
     char prevChar = string[0];
     while ('\0' != string[idx] && n != countOfZeros && n != countOfOnes) {
         int *count = '0' == string[idx] ? &countOfZeros : &countOfOnes;
-        *count = prevChar == string[idx] ? *count + 1 : 0;
+        *count = prevChar == string[idx] ? *count + 1 : 1;
         prevChar = string[idx];
         idx++;
     }
-
+    
     return n == countOfZeros || n == countOfOnes ? TRUE : FALSE;
+}
+
+int main() {
+    char string[MAX_LEN];
+    memcpy(string, "0001111110", 11);
+    int n = 6;
+
+    int res = hasNConsecutive0sOr1s(string, n);
+    printf("%s\n", !res ? "Good luck!" : "Sorry, sorry!");
+
+    return 0;
 }
