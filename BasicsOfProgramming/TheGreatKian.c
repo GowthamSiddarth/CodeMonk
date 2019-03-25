@@ -20,3 +20,20 @@ Print three values in one line (the answers).
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-great-kian/
 */
+
+struct GreatKian {
+    int sum1, sum2, sum3;
+};
+
+struct GreatKian getGreatKianSums(int *arr, int len) {
+    int sum1 = 0, sum2 = 0, sum3 = 0, idx;
+
+    for (idx = 0; idx < len; idx = idx + 3) {
+        sum1 = sum1 + arr[idx];
+        sum2 = idx + 1 < len ? sum2 + arr[idx + 1] : sum2;
+        sum3 = idx + 2 < len ? sum3 + arr[idx + 2] : sum3;
+    }
+    
+    struct GreatKian greatKian = {sum1, sum2, sum3};
+    return greatKian;
+}
