@@ -48,3 +48,7 @@ void updateArray(int *arr, int len, int pos, int value, int *cumulativeSumsArr) 
         idx++;
     }
 }
+
+int getSumInRange(int *cumulativeSumsArr, int len, int start, int end) {
+    return start > 0 ? cumulativeSumsArr[end] - cumulativeSumsArr[start - 1] : cumulativeSumsArr[end];
+}
