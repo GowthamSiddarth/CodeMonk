@@ -22,6 +22,10 @@ Each character of string Str will be in range [a, z]
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/print-hackerearth/
 */
+#define MAX_LEN 1000001
+
+#include <stdio.h>
+#include <string.h>
 
 int numberOfTargetWordsInString(char *string, char *target) {
     int count[26] = {0}, idx = 0;
@@ -30,11 +34,23 @@ int numberOfTargetWordsInString(char *string, char *target) {
         idx++;
     }
 
-    int minOcc = 0, idx = 0;
+    int minOcc = MAX_LEN;
+    idx = 0;
     while ('\0' != target[idx]) {
         minOcc = count[target[idx] - 'a'] < minOcc ? count[target[idx] - 'a'] : minOcc;
         idx++;
     }
 
     return minOcc;
+}
+
+int main() {
+    char string[MAX_LEN], target[MAX_LEN];
+    memcpy(string, "aahkcreeatrha", 14);
+    memcpy(target, "hackerearth", 12);
+
+    int res = numberOfTargetWordsInString(string, target);
+    printf("%d\n", res);
+
+    return 0;
 }
