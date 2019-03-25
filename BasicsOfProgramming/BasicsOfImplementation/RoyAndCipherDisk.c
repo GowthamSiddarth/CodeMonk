@@ -36,5 +36,9 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 
 int getClockwiseDistance(char from, char to) {
-    return to - from - 2 * 'a';
+    return to >= from ? to - from : to - from + 25 - 2 *'a';
+}
+
+int getAntiClockwiseDistance(char from, char to) {
+    return to >= from ? to - from + 25 - 2 *'a' : to - from;
 }
