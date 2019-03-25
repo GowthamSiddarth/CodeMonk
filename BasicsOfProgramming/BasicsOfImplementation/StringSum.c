@@ -24,6 +24,10 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/string-sum/
 */
+#define MAX_LEN 1001
+
+#include <stdio.h>
+#include <string.h>
 
 int getSumOfWeights(char *string) {
     int idx = 0, sum = 0;
@@ -34,4 +38,14 @@ int getSumOfWeights(char *string) {
     }
 
     return sum;
+}
+
+int main() {
+    char string[MAX_LEN];
+    memcpy(string, "aba", 4);
+
+    int res = getSumOfWeights(string);
+    printf("%d\n", res);
+    
+    return 0;
 }
