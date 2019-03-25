@@ -22,3 +22,19 @@ Each character of string Str will be in range [a, z]
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/print-hackerearth/
 */
+
+int numberOfTargetWordsInString(char *string, char *target) {
+    int count[26] = {0}, idx = 0;
+    while ('\0' != string[idx]) {
+        count[string[idx] - 'a']++;
+        idx++;
+    }
+
+    int minOcc = 0, idx = 0;
+    while ('\0' != target[idx]) {
+        minOcc = count[target[idx] - 'a'] < minOcc ? count[target[idx] - 'a'] : minOcc;
+        idx++;
+    }
+
+    return minOcc;
+}
