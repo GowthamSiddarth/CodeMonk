@@ -26,6 +26,13 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 #include <malloc.h>
 
+enum QueryType {UPDATE = 1, SUM = 2};
+
+struct Query {
+    enum QueryType type;
+    int param1, param2;
+};
+
 int * getCumulativeSums(int *arr, int len) {
     int * cumulativeSums = (int *)malloc(sizeof(int) * len);
     int idx, cumulativeSum = 0;
@@ -51,4 +58,19 @@ void updateArray(int *arr, int len, int pos, int value, int *cumulativeSumsArr) 
 
 int getSumInRange(int *cumulativeSumsArr, int len, int start, int end) {
     return start > 0 ? cumulativeSumsArr[end] - cumulativeSumsArr[start - 1] : cumulativeSumsArr[end];
+}
+
+void processQueries(struct Query *queries, int numOfQueries, int *arr, int len, int *cumulativeSumsArr) {
+    int idx;
+    for (idx = 0; idx < numOfQueries; idx++) {
+        struct Query currQuery = queries[idx];
+        switch (currQuery.type) {
+            case UPDATE:
+                updateArray(arr, len, currQuery.param1, currQuery.param2, cumulativeSumsArr);
+                break;
+            case SUM:
+                int sumInRange = getSumInRange(cumulativeSumsArr, len, currQuery.param1, currQuery.param2);
+                break;
+        }
+    }
 }
