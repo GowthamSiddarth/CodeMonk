@@ -24,3 +24,16 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-insert/
 */
+#include <malloc.h>
+
+int * getCumulativeSums(int *arr, int len) {
+    int * cumulativeSums = (int *)malloc(sizeof(int) * len);
+    int idx, cumulativeSum = 0;
+
+    for (idx = 0; idx < len; idx++) {
+        cumulativeSum = cumulativeSum + arr[idx];
+        cumulativeSums[idx] = cumulativeSum;
+    }
+
+    return cumulativeSums;
+}
