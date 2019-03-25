@@ -21,6 +21,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/min-max-3/
 */
+#include <stdio.h>
 
 enum Boolean {FALSE, TRUE};
 
@@ -41,4 +42,14 @@ enum Boolean rangeExistsBetweenMinAndMax(int *arr, int len) {
     }
 
     return TRUE;
+}
+
+int main() {
+    int arr[] = {4, 2, 1, 3, 5, 6};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    enum Boolean res = rangeExistsBetweenMinAndMax(arr, len);
+    printf("%s\n", res ? "YES" : "NO");
+    
+    return 0;
 }
