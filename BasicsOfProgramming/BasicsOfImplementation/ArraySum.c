@@ -18,3 +18,13 @@ Constraints
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/
 */
+
+long long int arraySum(long long int *array, int len) {
+    long long int sum = 0;
+    int idx;
+    for (idx = 0; idx < len; idx++) {
+        sum = sum + array[idx];
+    }
+
+    return sum;
+}
