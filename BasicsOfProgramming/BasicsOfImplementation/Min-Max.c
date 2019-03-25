@@ -21,3 +21,24 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/min-max-3/
 */
+
+enum Boolean {FALSE, TRUE};
+
+enum Boolean rangeExistsBetweenMinAndMax(int *arr, int len) {
+    enum Boolean exists[100] = {FALSE};
+    int minVal = 101, maxVal = 0, idx;
+
+    for (idx = 0; idx < len; idx++) {
+        exists[arr[idx] - 1] = TRUE;
+        if (arr[idx] < minVal) minVal = arr[idx];
+        if (arr[idx] > maxVal) maxVal = arr[idx];
+    }
+
+    for (idx = minVal - 1; idx <= maxVal - 1; idx++) {
+        if (!exists[idx]) {
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
