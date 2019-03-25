@@ -25,6 +25,7 @@ Constraints:
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-insert/
 */
 #include <malloc.h>
+#include <stdio.h>
 
 enum QueryType {UPDATE = 1, SUM = 2};
 
@@ -51,7 +52,7 @@ void updateArray(int *arr, int len, int pos, int value, int *cumulativeSumsArr) 
 
     int idx = pos;
     while (idx < len) {
-        cumulativeSumsArr[idx] = cumulativeSumsArr[idx] + prevVal - value;
+        cumulativeSumsArr[idx] = cumulativeSumsArr[idx] + value - prevVal;
         idx++;
     }
 }
@@ -64,13 +65,29 @@ void processQueries(struct Query *queries, int numOfQueries, int *arr, int len, 
     int idx;
     for (idx = 0; idx < numOfQueries; idx++) {
         struct Query currQuery = queries[idx];
+        int sumInRange;
         switch (currQuery.type) {
             case UPDATE:
                 updateArray(arr, len, currQuery.param1, currQuery.param2, cumulativeSumsArr);
                 break;
             case SUM:
-                int sumInRange = getSumInRange(cumulativeSumsArr, len, currQuery.param1, currQuery.param2);
+                sumInRange = getSumInRange(cumulativeSumsArr, len, currQuery.param1, currQuery.param2);
+                printf("%d\n", sumInRange);
                 break;
         }
     }
+}
+
+int main() {
+    int arr[] = {2, 3, 4, 8, 9};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int * cumulativeSums = getCumulativeSums(arr, len);
+
+    struct Query queries[] = {{1, 0, 3}, {2, 0, 1}, {2, 0, 4}, {1, 2, 5}, {2, 0, 3}};
+    int numOfQueries = sizeof(queries) / sizeof(queries[0]);
+
+    processQueries(queries, numOfQueries, arr, len, cumulativeSums);
+
+    return 0;
 }
