@@ -36,12 +36,15 @@ https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-
 */
 #define MAX_LEN 101
 
+#include <stdio.h>
+#include <string.h>
+
 int getClockwiseDistance(char from, char to) {
-    return to >= from ? to - from : to - from + 25 - 2 *'a';
+    return to >= from ? to - from : (26 - (from - 'a')) + (to - 'a');
 }
 
 int getAntiClockwiseDistance(char from, char to) {
-    return to >= from ? to - from + 25 - 2 *'a' : to - from;
+    return 26 - getClockwiseDistance(from, to);
 }
 
 void encrypt(char *message, int *encryptedMessage, int *len) {
@@ -61,4 +64,19 @@ void encrypt(char *message, int *encryptedMessage, int *len) {
     }
 
     *len = idx;
+}
+
+int main() {
+    char message[MAX_LEN];
+    memcpy(message, "hackerearth", 12);
+    int encryptedMessage[MAX_LEN];
+    int len;
+
+    encrypt(message, encryptedMessage, &len);
+    int idx;
+    for (idx = 0; idx < len; idx++) {
+        printf("%d ", encryptedMessage[idx]);
+    }
+    
+    return 0;
 }
