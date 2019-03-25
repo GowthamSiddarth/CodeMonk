@@ -34,6 +34,7 @@ Constraints:
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/roy-and-cipher-disk/
 */
+#define MAX_LEN 101
 
 int getClockwiseDistance(char from, char to) {
     return to >= from ? to - from : to - from + 25 - 2 *'a';
@@ -41,4 +42,23 @@ int getClockwiseDistance(char from, char to) {
 
 int getAntiClockwiseDistance(char from, char to) {
     return to >= from ? to - from + 25 - 2 *'a' : to - from;
+}
+
+void encrypt(char *message, int *encryptedMessage, int *len) {
+    char prevChar = 'a', currChar;
+    int idx = 0;
+
+    while ('\0' != message[idx]) {
+        currChar = message[idx];
+
+        int clockwiseDistance = getClockwiseDistance(prevChar, currChar);
+        int antiClockwiseDistance = getAntiClockwiseDistance(prevChar, currChar);
+
+        encryptedMessage[idx] = clockwiseDistance <= antiClockwiseDistance ? clockwiseDistance : -antiClockwiseDistance;
+        prevChar = currChar;
+
+        idx++;
+    }
+
+    *len = idx;
 }
