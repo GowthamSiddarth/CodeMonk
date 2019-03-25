@@ -20,6 +20,7 @@ Print three values in one line (the answers).
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/the-great-kian/
 */
+#include <stdio.h>
 
 struct GreatKian {
     int sum1, sum2, sum3;
@@ -36,4 +37,14 @@ struct GreatKian getGreatKianSums(int *arr, int len) {
     
     struct GreatKian greatKian = {sum1, sum2, sum3};
     return greatKian;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    struct GreatKian greatKian = getGreatKianSums(arr, len);
+    printf("%d %d %d\n", greatKian.sum1, greatKian.sum2, greatKian.sum3);
+
+    return 0;
 }
