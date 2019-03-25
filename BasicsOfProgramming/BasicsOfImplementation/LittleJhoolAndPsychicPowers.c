@@ -30,3 +30,18 @@ characters.
 
 https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/psychic-powers/
 */
+
+enum Boolean {FALSE, TRUE};
+
+enum Boolean hasNConsecutive0sOr1s(char *string, int n) {
+    int idx = 0, countOfZeros = 0, countOfOnes = 0;
+    char prevChar = string[0];
+    while ('\0' != string[idx] && n != countOfZeros && n != countOfOnes) {
+        int *count = '0' == string[idx] ? &countOfZeros : &countOfOnes;
+        *count = prevChar == string[idx] ? *count + 1 : 0;
+        prevChar = string[idx];
+        idx++;
+    }
+
+    return n == countOfZeros || n == countOfOnes ? TRUE : FALSE;
+}
