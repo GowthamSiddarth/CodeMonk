@@ -33,3 +33,14 @@ There are 21 chocolates and 3 friends, so he can distribute chocolates eqally. E
 
 https://www.hackerearth.com/practice/basic-programming/operators/basics-of-operators/practice-problems/algorithm/birthday-party-12/
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean canDistributeEqually(int numOfFriends, int numOfChocolates)
+{
+    return 0 == numOfChocolates % numOfFriends ? TRUE : FALSE;
+}
