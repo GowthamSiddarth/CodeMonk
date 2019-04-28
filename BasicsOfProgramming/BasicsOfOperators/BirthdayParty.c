@@ -33,6 +33,7 @@ There are 21 chocolates and 3 friends, so he can distribute chocolates eqally. E
 
 https://www.hackerearth.com/practice/basic-programming/operators/basics-of-operators/practice-problems/algorithm/birthday-party-12/
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -43,4 +44,13 @@ enum Boolean
 enum Boolean canDistributeEqually(int numOfFriends, int numOfChocolates)
 {
     return 0 == numOfChocolates % numOfFriends ? TRUE : FALSE;
+}
+
+int main()
+{
+    int numOfFriends = 3, numOfChocolates = 21;
+    enum Boolean res = canDistributeEqually(numOfFriends, numOfChocolates);
+
+    printf("%s\n", res ? "Yes" : "No");
+    return 0;
 }
